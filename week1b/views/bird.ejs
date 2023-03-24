@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>bird</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script type="application/javascript" src="/javascripts/index.js"></script>
+</head>
+<body>
+<h1>brid</h1>
+<p>show the bird information in there </p>
+
+<form action="bird" method="POST">
+    <label for="name">name</label>
+    <input type="text" id="name" name="name" value="" />
+    <label for="data">data</label>
+    <input type="text" id="data" name="data" value="" />
+    <label for="location">location</label>
+    <input type="text" id="location" name="location" value="" />
+
+    <label for="category">category</label>
+    <select id="category" name="category">
+        <option value="c" selected>A</option>
+        <option value="f">B</option>
+        <option value="k">C</option>
+    </select>
+
+
+    <label for="photo">photo</label>
+    <input type="file" id="photos" name="photos" value="choose" enctype="multipart/form-data" />
+
+    <label for="details">details</label>
+    <textarea id="details" name="details" rows="10" cols="50"></textarea>
+
+
+    <input type="submit" , value = " ok">
+</form>
+</body>
+</html>

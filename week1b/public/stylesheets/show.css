@@ -1,0 +1,113 @@
+/*table {*/
+/*    border-collapse: collapse;*/
+/*    width: 100%;*/
+
+/*    table-layout: fixed;*/
+/*}*/
+
+/*th, td {*/
+/*    text-align: left;*/
+/*    padding: 8px;*/
+/*}*/
+
+/*th {*/
+/*    background-color: #4CAF50;*/
+/*    color: white;*/
+/*}*/
+
+/*tr:nth-child(even) {*/
+/*    background-color: #f2f2f2;*/
+/*}*/
+
+/*tr:hover {*/
+/*    background-color: #ddd;*/
+/*}*/
+
+/*td {*/
+/*    border-bottom: 1px solid #ddd;*/
+
+/*}*/
+/*td {*/
+/*    word-break: break-word;*/
+/*    max-width: 150px;*/
+/*}*/
+
+
+.bird-info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.bird-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.bird-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bird-info li {
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bird-info {
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.bird-info {
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 设置搜索表单样式 */
+.form-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    width: 200px;
+    margin-right: 10px;
+}
+
+/* 设置按钮样式 */
+.btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all .15s ease-in-out;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-success:hover,
+.btn-danger:hover {
+    opacity: 0.8;
+}
+
+

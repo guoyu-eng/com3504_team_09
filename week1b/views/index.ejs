@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script type="application/javascript" src="/javascripts/index.js"></script>
+  </head>
+    <body onload="checkForErrors(<%= login_is_correct %>)">
+    <p>This is the home page for <%= title %>. Please login</p>
+
+
+    <form action="welcome" method="POST">
+      Username:<br/>
+      <input type="text" name="username"><br>
+      Password:<br/>
+      <input type="password" name="password">
+      <br/>
+      <input type="submit"></form>
+    </form>
+  </body>
+</html>
