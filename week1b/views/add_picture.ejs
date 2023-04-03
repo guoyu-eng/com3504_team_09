@@ -44,7 +44,7 @@
     <% for (const name in bird) { %>
         <div class="bird-info">
             <ul>
-                <li><strong>Data:</strong> <%= bird[name].data %></li>
+                <li><strong>Data:</strong> <%= bird[name].name %></li>
                 <li><strong>Details:</strong> <%= bird[name].details %></li>
                 <li><strong>Location:</strong> <%= bird[name].location %></li>
                 <li><strong>Location:</strong> <img src="<%= bird[name].photo %>"></li>
@@ -71,6 +71,8 @@
 
     <input type="submit" value="details" ></form>
 </form>
+<!--<script src="../public/javascripts/birdInformation.js.js"></script>-->
+
 
 </body>
 </html>

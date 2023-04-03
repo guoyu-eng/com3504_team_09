@@ -1,6 +1,7 @@
 var express = require('express');
 const mongoose = require('mongoose');
 var birdModel = require('../controller/bird');
+var readbird = require('../controller/readbird');
 
 
 var router = express.Router();
@@ -27,8 +28,12 @@ router.get('/details', function(req, res, next) {
 });
 
 
+// router.get('/add_picture', birdModel.listAll);
+//
+
 router.post('/bird', function(req, res, next) {
   birdModel.create(req,res);
+  readbird.getBirds(req,res);
 });
 
 router.post('/add_picture', function(req, res, next) {
