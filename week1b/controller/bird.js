@@ -24,9 +24,11 @@ exports.create = function (req, res) {
             // console.log(birdObject);
             // res.render('add_picture', { bird: birdObject }, options);
             // res.redirect('add_picture');
-        }).then(function() {
             return readbird.getBirds(req, res);
-            })
+        })
+        // .then(function() {
+        //     return readbird.getBirds(req, res);
+        //     })
         .catch(error => {
             console.error(error);
             res.status(500).send('Error saving  database.');
