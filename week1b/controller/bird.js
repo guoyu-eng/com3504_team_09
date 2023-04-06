@@ -1,8 +1,9 @@
 // const image = require('../model/image');
 var bodyParser = require("body-parser");
-//var req = require('request');
 var Bird = require('../model/bird');
 var path = require('path');
+// var req = require('request');
+var readbird = require('../controller/readbird');
 
 
 exports.create = function (req, res) {
@@ -11,6 +12,7 @@ exports.create = function (req, res) {
         name: userData.name,
         details: userData.details,
         // dob: userData.year
+        inputImg: req.file.path
     });
 
 
@@ -22,7 +24,9 @@ exports.create = function (req, res) {
             // console.log(birdObject);
             // res.render('add_picture', { bird: birdObject }, options);
             // res.redirect('add_picture');
-        })
+        }).then(function() {
+            return readbird.getBirds(req, res);
+            })
         .catch(error => {
             console.error(error);
             res.status(500).send('Error saving  database.');

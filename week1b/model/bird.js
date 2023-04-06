@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 
 var BirdSchema = new Schema({
     name: { type: String, required: true,max :10 },
-    details: { type: String, required: true }
+    details: { type: String, required: true },
+    inputImg: { type: String }
+
 });
 
 // const ImageSchema = new Schema({
