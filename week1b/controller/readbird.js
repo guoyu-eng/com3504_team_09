@@ -5,15 +5,27 @@ var Bird = require('../model/bird');
 var path = require('path');
 
 
-
 exports.getBirds = (req, res) => {
-    Bird.find()
+    Bird.aggregate([
+        { $group: { _id: "$name", bird: { $first: "$$ROOT" } } },
+        { $replaceRoot: { newRoot: "$bird" } }
+    ])
         .then(birds => {
-            res.render('add_picture', { bird: birds });
+            Bird.deleteMany({})
+                .then(() => {
+                    // delect the coche
+                    return Bird.insertMany(birds);
+                })
+                .then(() => {
+                    res.render('add_picture', { bird: birds });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).send('Error retrieving birds from database.');
+                });
         })
         .catch(err => {
             console.log(err);
             res.status(500).send('Error retrieving birds from database.');
         });
 };
-
