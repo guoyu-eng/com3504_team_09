@@ -9,11 +9,16 @@ var readbird = require('../controller/readbird');
 exports.create = function (req, res) {
     delete res.locals.bird;
     const userData = req.body;
+    console.log("userData,")
+    console.log(userData);
     const birdsave = new Bird({
         name: userData.name,
         details: userData.details,
         // dob: userData.year
-        inputImg: req.file.path
+        inputImg: req.file.path,
+        lat: userData.lat,
+        lng: userData.lng,
+        addr: userData.addr
     });
 
     birdsave.save()
