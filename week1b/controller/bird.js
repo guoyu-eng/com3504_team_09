@@ -11,11 +11,13 @@ exports.create = function (req, res) {
     const userData = req.body;
     console.log("userData,")
     console.log(userData);
+    let trimmmedImgFilePath = req.file.path.substring(7)
     const birdsave = new Bird({
         name: userData.name,
         details: userData.details,
         // dob: userData.year
-        inputImg: req.file.path,
+        //inputImg: req.file.path,
+        inputImg: trimmmedImgFilePath,
         lat: userData.lat,
         lng: userData.lng,
         addr: userData.addr
