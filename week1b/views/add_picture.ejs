@@ -3,8 +3,16 @@
 <head>
 
     <link rel='stylesheet' href='/stylesheets/show.css'>
-<!--    <script type="application/javascript" src="/javascripts/index.js"></script>-->
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+            integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+            crossorigin="anonymous"></script>    <!--    <script type="application/javascript" src="/javascripts/index.js"></script>-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/geocodeMap.css" />
 
+    <!--    <script type="module" src="javascripts/geocoder.js"></script> -->
+
+    <script type="module" src="javascripts/searchByAddress.js"></script>
 </head>
 <body>
 
@@ -39,34 +47,46 @@
     </ul>
 </div>
 
-<% if (typeof bird !== 'undefined') { %>
-    <% for (const name in bird) { %>
-        <% console.log('test', bird[name]) %>
-        <% console.log('testing', bird[name].inputImg) %>
+<div id="geocoder">
+    <div id="geocoder-buttons"></div>
+    <div id="map"></div>
+</div>
+<div id="birds-list">
+    <% if (typeof bird !== 'undefined') { %>
+        <% let i = 0; %>
+        <% for (const name in bird) { %>
+            <% console.log('test', bird[name]) %>
+            <% console.log('testing', bird[name].inputImg) %>
+            <% let thisID = "bird-info-" + i %>
+            <div class="bird-info" id="<%= thisID %>">
+                <ul>
+                    <li><span class="list-title"><strong>Data:</strong></span>
+                        <span class="list-value"> <%= bird[name].name %> </span></li>
+                    <li><span class="list-title"><strong>Details:</strong></span>
+                        <span class="list-value"> <%= bird[name].details %> </span></li>
+                    <li><span class="list-title"><strong>Location:</strong></span>
+                        <span class="list-value"> <%= bird[name].location %> </span></li>
+                    <li id="lat"><span class="list-title"><strong>Lat:</strong></span>
+                        <span class="list-value"> <%= bird[name].lat %> </span></li>
+                    <li id="lng" ><span class="list-title"><strong>Lng:</strong></span>
+                        <span class="list-value"> <%= bird[name].lng %> </span></li>
+                    <li id="address"><span class="list-title"><strong>Address:</strong></span>
+                        <span class="list-value"> <%= bird[name].addr %> </span></li>
 
-        <div class="bird-info">
-            <ul>
-                <li><strong>Data:</strong> <%= bird[name].name %></li>
-                <li><strong>Details:</strong> <%= bird[name].details %></li>
-                <li><strong>Location:</strong> <%= bird[name].location %></li>
-                <li><strong>Lat:</strong> <%= bird[name].lat %></li>
-                <li><strong>Lng:</strong> <%= bird[name].lng %></li>
-                <li><strong>Address:</strong> <%= bird[name].addr %></li>
+                    <li><span class="list-title"><strong>image:</strong></span>
+                       <!-- <img src="/uploads/1680800565871.jpg" alt="Bird Image"> -->
+                        <img src="<%= bird[name].inputImg %>" alt="Bird Image"></li>
 
-                <li><strong>image:</strong>
-                    <script>console.log("test")</script>
-                   <!-- <img src="/uploads/1680800565871.jpg" alt="Bird Image"> -->
-                    <img src="<%= bird[name].inputImg %>" alt="Bird Image"></li>
-
-                <a href="/function/birdedit?id=<%= bird._id %>" class="btn btn-success">fixed</a>
-                <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>
-            </ul>
-        </div>
+                    <a href="/function/birdedit?id=<%= bird._id %>" class="btn btn-success">fixed</a>
+                    <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>
+                </ul>
+            </div>
+            <% i++; %>
+        <% } %>
+    <% } else { %>
+        <p>Bird not found.</p>
     <% } %>
-<% } else { %>
-    <p>Bird not found.</p>
-<% } %>
-
+</div>
 
 
 
@@ -83,6 +103,12 @@
 </form>
 <!--<script src="../public/javascripts/birdInformation.js.js"></script>-->
 
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY&callback=initMap&v=weekly&region=UK"
+        defer
+></script>
 
+<!-- <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+    ({key: "AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY", v: "weekly"});</script> -->
 </body>
 </html>
