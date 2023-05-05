@@ -63,7 +63,7 @@ var upload = multer({ storage: storage });
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'bird Class', login_is_correct:true });
+  res.render('index', { title: 'bird Class' });
 });
 
 
@@ -75,7 +75,7 @@ router.get('/bird', function(req, res, next) {
 
 //get the add picture  page
 router.get('/add_picture', function(req, res, next) {
-  res.render('add_picture', { title: 'add_picture'});
+  res.render('index', { title: 'index'});
 });
 
 router.get('/details', function(req, res, next) {
