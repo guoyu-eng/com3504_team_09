@@ -227,4 +227,27 @@ function doUpload(title, author, description, imgType, img){
     });
 }
 
+window.addEventListener('offline', function(e) {
+    // Queue up events for server.
+    console.log("You are offline");
+    showOfflineWarning();
+}, false);
+
+window.addEventListener('online', function(e) {
+    // Resync data with server.
+    console.log("You are online");
+    hideOfflineWarning();
+    loadData(false);
+}, false);
+
+function showOfflineWarning(){
+    if (document.getElementById('offline_div')!=null)
+        document.getElementById('offline_div').style.display='block';
+}
+
+function hideOfflineWarning(){
+    if (document.getElementById('offline_div')!=null)
+        document.getElementById('offline_div').style.display='none';
+}
+
 
