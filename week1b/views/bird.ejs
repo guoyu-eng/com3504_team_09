@@ -3,19 +3,24 @@
 <head>
     <title>bird</title>
     <link rel='stylesheet' href='/stylesheets/style.css'>
-    <script type="application/javascript" src="/javascripts/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootswatch/5.1.0/cosmo/bootstrap.min.css">
+
+
 </head>
 <body>
 <h1>brid</h1>
 <p>show the bird information in there </p>
 
-<form action="bird" method="POST">
+<form action="bird" method="POST" enctype="multipart/form-data">
     <label for="name">name</label>
     <input type="text" id="name" name="name" value="" />
-    <label for="data">data</label>
-    <input type="text" id="data" name="data" value="" />
-    <label for="location">location</label>
-    <input type="text" id="location" name="location" value="" />
+
+    <p><label for="date">date</label>
+    <input type="date" id="date" name="date" value="" />
+    </p>
+    <p><label for="location">location</label>
+        <input type="text" id="location" name="location" value="" />
+    </p>
 
     <label for="category">category</label>
     <select id="category" name="category">
@@ -25,14 +30,19 @@
     </select>
 
 
-    <label for="photo">photo</label>
-    <input type="file" id="photos" name="photos" value="choose" enctype="multipart/form-data" />
+    <label for="inputImage">Please upload your images in here</label>
+    <div >
+    <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" />
+<!--        <input type="file" id="inputImage" name="inputImg" value="choose" accept="image/*" required >-->
+    </div>
 
-    <label for="details">details</label>
-    <textarea id="details" name="details" rows="10" cols="50"></textarea>
 
+    <p><label for="details">details</label>
+        <textarea id="details" name="details" rows="10" cols="50"></textarea>
+    </p>
 
-    <input type="submit" , value = " ok">
+    <p><input type="submit" , value = " ok"></p>
 </form>
+<script type="application/javascript" src="/javascripts/index.js"></script>
 </body>
 </html>

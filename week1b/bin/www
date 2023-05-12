@@ -7,12 +7,19 @@
 var app = require('../app');
 var debug = require('debug')('week1:server');
 var http = require('http');
+var database= require('../db/bird')
+
+
+
+
+
+
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3006');
+var port = normalizePort(process.env.PORT || '3007');
 app.set('port', port);
 
 /**

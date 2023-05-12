@@ -1,155 +1,83 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
 
-    <link rel='stylesheet' href='/stylesheets/show.css'>
-<!--    <script type="application/javascript" src="/javascripts/index.js"></script>-->
+<!--    <link rel='stylesheet' href='/stylesheets/show.css'>-->
+<!--&lt;!&ndash;    <script type="application/javascript" src="/javascripts/index.js"></script>&ndash;&gt;-->
+
+<!--</head>-->
+<!--<body>-->
+
+<!--<p>user can add the picture in there</p>-->
 
 
-</head>
-<body>
-
-<p>user can add the picture in there</p>
-
-
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Name</th>-->
-<!--        <th>Data</th>-->
-<!--        <th>Details</th>-->
-<!--        <th>Location</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-
-<!--    <tr>-->
-<!--        <td colspan="4">-->
-<!--            <p>user can add the picture in there</p>-->
-<!--&lt;!&ndash;            <form action="add_picture" method="POST">&ndash;&gt;-->
-<!--&lt;!&ndash;                <input type="submit" value="add">&ndash;&gt;-->
-<!--&lt;!&ndash;            </form>&ndash;&gt;-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    <% for (const name in bird) { %>-->
-<!--        <tr>-->
-<!--            <td><%= bird[name].name %></td>-->
-<!--            <td><%= bird[name].data %></td>-->
-<!--            <td><%= bird[name].details %></td>-->
-<!--            <td><%= bird[name].location %></td>-->
-
-<!--        </tr>-->
-
-<!--    <% } %>-->
-
-<!--</table>-->
-
-<div class="card mb-3" style="width: 100%;">
-    <div class="card-header">search</div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item" style="display:flex;justify-content:space-between;align-items:center;">
+<!--<div class="card mb-3" style="width: 100%;">-->
+<!--    <div class="card-header">search</div>-->
+<!--    <ul class="list-group list-group-flush">-->
+<!--        <li class="list-group-item" style="display:flex;justify-content:space-between;align-items:center;">-->
 <!--            <form class="form-inline" enctype="multipart/form-data" action="/product/search" method="GET">-->
-<!--                <label for="category-location">Search:</label>-->
-<!--                <select class="form-control mx-2" name="category-location" id="category-location">-->
-<!--                    <optgroup label="name">-->
-<!--                        <option value="books/new_york">A</option>-->
-<!--                        <option value="books/los_angeles">A</option>-->
-<!--                        <option value="books/chicago">A</option>-->
-<!--                    </optgroup>-->
-<!--                    <optgroup label="location">-->
-<!--                        <option value="electronics/new_york">B</option>-->
-<!--                        <option value="electronics/los_angeles">B</option>-->
-<!--                        <option value="electronics/chicago">B</option>-->
-<!--                    </optgroup>-->
-<!--                    <optgroup label="data">-->
-<!--                        <option value="clothing/new_york">CC</option>-->
-<!--                        <option value="clothing/los_angeles">C</option>-->
-<!--                        <option value="clothing/chicago">C</option>-->
-<!--                    </optgroup>-->
+
+<!--                <select class="form-control mx-2" name="category" id="category">-->
+<!--                    <option value="name_search">name</option>-->
+<!--                    <option value="B">data</option>-->
+<!--                    <option value="C">categorly</option>-->
 <!--                </select>-->
+
+<!--                <select class="form-control mx-2" name="name" id="name">-->
+<!--                    <option value="A">A</option>-->
+<!--                    <option value="B">B</option>-->
+<!--                    <option value="C">C</option>-->
+<!--                </select>-->
+
 <!--                <button type="submit" class="btn btn-primary">search</button>-->
 <!--            </form>-->
-            <form class="form-inline" enctype="multipart/form-data" action="/product/search" method="GET">
-
-                <select class="form-control mx-2" name="category" id="category">
-                    <option value="name_search">name</option>
-                    <option value="B">data</option>
-                    <option value="C">categorly</option>
-                </select>
-
-                <select class="form-control mx-2" name="name" id="name">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                </select>
-
-                <button type="submit" class="btn btn-primary">search</button>
-            </form>
-
-
-
-
-            <div>
-                <a href="/product/previous" class="btn btn-success mr-2">next</a>
-                <a href="/product/next" class="btn btn-danger">previous</a>
-            </div>
-        </li>
-    </ul>
-</div>
-
-
-
-<% for (const name in bird) { %>
-    <div class="bird-info">
-<!--        <h2><%= bird[name].name %></h2>-->
-        <ul>
-            <li><strong>Data:</strong> <%= bird[name].data %></li>
-            <li><strong>Details:</strong> <%= bird[name].details %></li>
-            <li><strong>Location:</strong> <%= bird[name].location %></li>
-
-            <li><strong>Location:</strong> <img src="<%= bird[name].photo %>"></li>
-
-            <a href="/function/birdedit?id=<%= bird._id %>" class="btn btn-success">fixed</a>
-            <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>
-
-        </ul>
-    </div>
-<% } %>
-
-
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <% for (const name in bird) { %>-->
-<!--            <div class="col-md-6">-->
-<!--                <div class="card">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title"><%= bird[name].name %></h5>-->
-<!--                        <p class="card-text"><%= bird[name].location %></p>-->
-
-<!--                    </div>-->
-<!--                </div>-->
-
+<!--            <div>-->
+<!--                <a href="/product/previous" class="btn btn-success mr-2">next</a>-->
+<!--                <a href="/product/next" class="btn btn-danger">previous</a>-->
 <!--            </div>-->
-
-<!--        <% } %>-->
-<!--&lt;!&ndash;            <a href="#" class="btn btn-primary">View Details</a>&ndash;&gt;-->
-<!--    </div>-->
+<!--        </li>-->
+<!--    </ul>-->
 <!--</div>-->
 
+<!--<% if (typeof bird !== 'undefined') { %>-->
+<!--    <% for (const name in bird) { %>-->
+
+
+<!--        <div class="bird-info">-->
+<!--            <ul>-->
+<!--                <li><strong>Data:</strong> <%= bird[name].name %></li>-->
+<!--                <li><strong>Details:</strong> <%= bird[name].details %></li>-->
+<!--                <li><strong>Location:</strong> <%= bird[name].location %></li>-->
+<!--                <li><strong>image:</strong>-->
+<!--                    <script>console.log("test")</script>-->
+<!--                    &lt;!&ndash; <img src="/uploads/1680800565871.jpg" alt="Bird Image"> &ndash;&gt;-->
+<!--                    <img src="<%= bird[name].inputImg %>" alt="Bird Image"></li>-->
+
+<!--                <a href="/function/birdedit?id=<%= bird._id %>" class="btn btn-success">fixed</a>-->
+<!--                <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    <% } %>-->
+<!--<% } else { %>-->
+<!--    <p>Bird not found.</p>-->
+<!--<% } %>-->
 
 
 
 
 
-<form action="add_picture" method="POST">
+<!--<form action="add_picture" method="POST">-->
 
 
-    <input type="submit" value="add" ></form>
-</form>
-<form action="details" method="POST">
+<!--    <input type="submit" value="add" ></form>-->
+<!--</form>-->
+<!--<form action="details" method="POST">-->
 
 
-    <input type="submit" value="details" ></form>
-</form>
+<!--    <input type="submit" value="details" ></form>-->
+<!--</form>-->
+<!--&lt;!&ndash;<script src="../public/javascripts/birdInformation.js.js"></script>&ndash;&gt;-->
 
-</body>
-</html>
+
+<!--</body>-->
+<!--</html>-->

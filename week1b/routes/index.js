@@ -1,28 +1,62 @@
 var express = require('express');
-
+const mongoose = require('mongoose');
+var birdModel = require('../controller/bird');
+var readbird = require('../controller/readbird');
+var multer = require('multer');
 var router = express.Router();
-const birdData = {};
+
+
+const fs = require('fs');
+const uploadDir = 'public/uploads/';
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    // Check if the upload directory exists, create it if necessary
+    fs.stat(uploadDir, function(err, stats) {
+      if (err) {
+        console.log('Upload directory does not exist. Creating new directory...');
+        fs.mkdirSync(uploadDir);
+      }
+      cb(null, uploadDir);
+    });
+  },
+  filename: function (req, file, cb) {
+    var original = file.originalname;
+    var file_extension = original.split(".");
+    // Make the file name the date + the file extension
+    filename =  Date.now() + '.' + file_extension[file_extension.length-1];
+    cb(null, filename);
+  }
+});
+console.log('File upload middleware called');
+var upload = multer({ storage: storage });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'COM3504/6504 Lab Class', login_is_correct:true });
+
+  res.render('index', { title: 'bird Class' });
 });
 
 
 /* POST from form. */
-router.post('/welcome', function(req, res, next) {
-  var username= req.body.username;
-  var password= req.body.password;
 
-
-  if (username==='COM3504_6504'){
-    res.render('welcome', { title: username,  login_is_correct:true });
-  } else {
-    res.render('index', { title: 'COM3504/6504', login_is_correct:false });
-  }
-
-
-});
-//get the bird page
 router.get('/bird', function(req, res, next) {
   res.render('bird', { title: 'birdData'});
 });
@@ -32,89 +66,62 @@ router.get('/add_picture', function(req, res, next) {
   res.render('add_picture', { title: 'add_picture'});
 });
 
+// router.get('/details', function(req, res, next) {
+//   res.render('details', { title: 'details'});
+// });
+const Bird = require('../model/bird');
 
 
-router.post('/bird', function(req, res, next) {
-  var username= req.body.username;
-  var name = req.body.name;
-  var data = req.body.data;
-  var category = req.body.category;
-
-  var details = req.body.details;
-  var location = req.body.location;
-  // var photo = req.files.photo;
-
-
-  let birdData_1 = {};
-  birdData[name] = { name };
-  birdData[data] = { data };
-  birdData[details] = { details };
-  birdData[location] = { location };
+router.get('/details', function(req, res) {
+  const id = req.query.id;
+  Bird.findOne({ _id: id }).exec()
+      .then(bird => {
+        res.render('details', { title: 'add_picture', bird: bird });
+      })
+      .catch(err => {
+        throw err;
+      });
+});
 
 
-  if (username!== null){
-    res.render('add_picture', { bird: birdData  });
+
+
+
+
+// router.get('/add_picture', birdModel.listAll);
+//
+
+// router.post('/bird', upload.single('inputImg'), function(req, res) {
+//   console.log(req);
+//   birdModel.create(req,res);
+//   readbird.getBirds(req,res);
+// });
+
+router.post('/bird', upload.single('inputImg'), function(req, res) {
+  birdModel.create(req, res);
+  // readbird.getBirds(req, res);
+
+  if (!req.file) {
+    console.log('Error: no file uploaded');
+    return res.status(400).send('Error: no file uploaded');
   }
 
+  console.log(req.file);
 });
+
+
+
+
+
 
 router.post('/add_picture', function(req, res, next) {
-  var username= req.body.username;
-  var category = req.body.category;
-  var photos = req.body.photos;
-  var details = req.body.details;
-
-  if (username!== null){
-    res.render('bird', { title: "" });
-  }
-
+  res.render('bird', { title: " " });
 });
-
-
 
 router.post('/details', function(req, res, next) {
-  var username= req.body.username;
-  var category = req.body.category;
-  var photos = req.body.photos;
-  var details = req.body.details;
-
-  if (username!== null){
-    res.render('details', { title: "" });
-  }
-
+  res.render('details', { title: "" });
 });
 
-
-router.get('/details', function(req, res, next) {
-  res.render('details', { title: 'details'});
-});
-
-
-
-
-
-
-// const express = require('express');
-// const multer = require('multer');
-// const app = express();
-//
-// // 存储上传的图片到 public/image 目录下
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'public/image')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname)
-//   }
-// });
-//
-// const upload = multer({ storage: storage });
-//
-// // 处理表单提交的数据
-// app.post('/upload', upload.single('photos'), function(req, res) {
-//   // 这里可以添加一些额外的处理逻辑
-//   res.send('上传成功');
-// });
 
 
 

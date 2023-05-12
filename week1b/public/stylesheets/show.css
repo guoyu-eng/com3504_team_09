@@ -1,43 +1,17 @@
-/*table {*/
-/*    border-collapse: collapse;*/
-/*    width: 100%;*/
-
-/*    table-layout: fixed;*/
-/*}*/
-
-/*th, td {*/
-/*    text-align: left;*/
-/*    padding: 8px;*/
-/*}*/
-
-/*th {*/
-/*    background-color: #4CAF50;*/
-/*    color: white;*/
-/*}*/
-
-/*tr:nth-child(even) {*/
-/*    background-color: #f2f2f2;*/
-/*}*/
-
-/*tr:hover {*/
-/*    background-color: #ddd;*/
-/*}*/
-
-/*td {*/
-/*    border-bottom: 1px solid #ddd;*/
-
-/*}*/
-/*td {*/
-/*    word-break: break-word;*/
-/*    max-width: 150px;*/
-/*}*/
-
-
 .bird-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
     border: 1px solid #ccc;
     padding: 10px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
+
+
+
+
 
 .bird-info h2 {
     font-size: 24px;
@@ -110,4 +84,34 @@
     opacity: 0.8;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
 
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form {
+    margin: 0 10px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0062cc;
+}

@@ -11,12 +11,21 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var birdsRouter = require('./routes/birds');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+const birdRouter = require('./routes/birds');
+app.use('/bird', birdRouter);
+
+
+// app.use(express.static('public'));
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,8 +38,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-var birdRouter = require('./routes/birds');
-app.use('/birds', birdRouter);
+// var birdRouter = require('./routes/birds');
+app.use('/birds', birdsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

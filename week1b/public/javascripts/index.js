@@ -11,14 +11,14 @@ function  checkForErrors(isLoginCorrect){
 
 }
 
-
-
-const aboutButton = document.getElementById('about-button');
-aboutButton.addEventListener('click', () => {
-    // 发送HTTP请求跳转到/about页面
-    window.location.href = '/add_picture';
-});
-
+//
+//
+// const aboutButton = document.getElementById('about-button');
+// aboutButton.addEventListener('click', () => {
+//     // 发送HTTP请求跳转到/about页面
+//     window.location.href = '/add_picture';
+// });
+//
 
 
 

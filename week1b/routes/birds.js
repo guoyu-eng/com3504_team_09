@@ -1,29 +1,23 @@
 var express = require('express');
 var router = express.Router();
+var model = require('../model/bird');
 
-//创建一个包含多个鸟的数组
-var birds = [
-    {name: "Sparrow", location: "Garden"},
-    {name: "Pigeon", location: "City"},
-    {name: "Eagle", location: "Mountains"}
-];
-
-//处理"/birds"路由的GET请求
-router.get('details', function(req, res, next) {
-    res.render('details', {birds: birds});
-});
-
-
-router.post('/details', function(req, res, next) {
-    var username= req.body.username;
-    var category = req.body.category;
-    var photos = req.body.photos;
-    var details = req.body.details;
-
-    if (username!== null){
-        res.render('details', { title: "" });
+router.post('/bird',function(req, res, next){
+    var birds = {
+        name: req.body.name,
+        data: req.body.data,
+        id: Date.now(),
     }
-
-});
+    model.connect(function(db){
+        db.collection('birdAdd').insertOne(birds, function(err, ret){
+            if(err){
+                console.log("cannot do ", err)
+                res.redirect('/index')
+            }else{
+                res.redirect('/index')
+            }
+        })
+    })
+})
 
 module.exports = router;
