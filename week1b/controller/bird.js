@@ -18,13 +18,14 @@ exports.create = function (req, res) {
 
     console.log("撒打算大:", userData.date);
     console.log("撒打算大:", new Date(userData.date));
+    const date1 = new Date(userData.date);
 
-    const date = new Date(userData.date).toISOString().split('T')[0];
+    const date2 = date1.toISOString();
 
     const birdsave = new Bird({
         name: userData.name,
         details: userData.details,
-        date: date,
+        date: date2,
         location: userData.location,
         inputImg: trimmmedImgFilePath
     });
