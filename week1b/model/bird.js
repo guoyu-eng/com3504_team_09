@@ -4,7 +4,7 @@ const BirdSchema = new mongoose.Schema({
     name: { type: String, required: true, max: 10 },
     details: { type: String, required: true },
     inputImg: { type: String },
-    // date: { type: Date, required: true },
+    date: { type: Date },
     Nickname: { type: String,  max: 10 },
     location: { type: String, required: true }
 

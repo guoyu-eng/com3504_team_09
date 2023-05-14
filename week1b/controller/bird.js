@@ -12,15 +12,15 @@ const fs = require('fs');
 
 exports.create = function (req, res) {
     console.log(req.file)
-    console.log("的撒打算大")
+
 
     delete res.locals.bird;
     const userData = req.body
     let trimmmedImgFilePath = req.file.path.substring(7)
     // console.log(userData);
 
-    // console.log("撒打算大:", userData.date);
-    // console.log("撒打算大:", new Date(userData.date));
+    // console.log("", userData.date);
+    // console.log("", new Date(userData.date));
 
     const date1 = new Date(userData.date);
     const date2 = date1.toISOString();
@@ -29,12 +29,12 @@ exports.create = function (req, res) {
     const birdsave = new Bird({
         name: userData.name,
         details: userData.details,
-        date: date2,
+        date: userData.date2,
         Nickname : userData.Nickname,
         location: userData.location,
         inputImg: trimmmedImgFilePath
     });
-    // console.log("阿的酸辣粉");
+    // console.log("");
     //
     // console.log(birdsave);
 
