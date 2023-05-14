@@ -4,6 +4,9 @@ var birdModel = require('../controller/bird');
 var readbird = require('../controller/readbird');
 var multer = require('multer');
 var router = express.Router();
+var showindex = require('../controller/showindex');
+const birdController = require('../controller/deleteBird');
+
 
 
 const fs = require('fs');
@@ -49,10 +52,13 @@ var upload = multer({ storage: storage });
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'bird Class' });
+router.get('/', function(req, res, next) {
+  readbird.getBirds(req, res);
+  // res.render('index', { title: 'birdData'});
 });
+
+
 
 
 /* POST from form. */
@@ -83,6 +89,15 @@ router.get('/details', function(req, res) {
       });
 });
 
+// router.get('/some/route', function(req, res) {
+//   // cacho
+//   res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+//   res.set('Pragma', 'no-cache');
+//   res.set('Expires', 0);
+//
+//   //
+//   // ...
+// });
 
 
 
@@ -114,6 +129,7 @@ router.post('/bird', upload.single('inputImg'), function(req, res) {
 
 
 
+
 router.post('/add_picture', function(req, res, next) {
   res.render('bird', { title: " " });
 });
@@ -122,6 +138,9 @@ router.post('/details', function(req, res, next) {
   res.render('details', { title: "" });
 });
 
+
+
+router.delete('/bird/delete', birdController.deleteBird);
 
 
 

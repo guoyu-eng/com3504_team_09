@@ -57,7 +57,10 @@
 
         <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success" onclick="showImage('<%= bird[name].inputImg %>')">showing</a>
 
-        <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>
+<!--        <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>-->
+
+<!--        <a href="#" class="btn btn-danger" onclick="deleteBird('<%= bird[name]._id %>', '<%= bird[name].inputImg %>')">Delete</a>-->
+
       </ul>
     </div>
   <% } %>
@@ -72,7 +75,25 @@
   </form>
 
 </div>
+<script>
+  function deleteBird(id, imgPath) {
+    var xhr = new XMLHttpRequest();
+    console.log("id is :")
+    console.log(id)
 
+    xhr.open('DELETE', '/bird/delete?id=' + id + '&imgPath=' + imgPath);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log('Bird deleted successfully.');
+        window.location.reload();
+      } else {
+        console.log('Error deleting bird.');
+      }
+    };
+    xhr.send();
+  }
+</script>
 
+<!--<script type="application/javascript" src="/javascripts/deletebird.js"></script>-->
 </body>
 </html>
