@@ -174,4 +174,3 @@ function getForecast(forecast) {
 }
 window.getForecast=getForecast;
 
-
