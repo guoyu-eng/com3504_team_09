@@ -79,7 +79,7 @@ async function getCachedData(birdName) {
             let tx = await db.transaction(BIRD_STORE_NAME, 'readonly');
             let store = await tx.objectStore(BIRD_STORE_NAME);
             let index = await store.index('name');
-            let readingsList = await index.getAll(IDBKeyRange.only(birdName));
+            let readingsList = await index.getAll();
             await tx.complete;
         }catch (error) {
             console.log(error);

@@ -18,7 +18,7 @@
 <body>
 <script defer src="week1b/public/javascripts/form.js"></script>
 
-<form id="birdForm" name = "birdForm" onSubmit="birdUpload(); return false" >
+<form id="birdForm" name = "birdForm" onSubmit="return false" >
     <label for="name">name</label>
     <input type="text" id="name" name="name" value="" />
 
@@ -61,7 +61,7 @@
         <textarea id="details" name="details" rows="10" cols="50"></textarea>
     </p>
 
-    <p><input type="button" , value = "ok" onclick="birdUpload()"></p>
+    <p><input type="submit" , value = "ok" onclick="birdUpload()"></p>
 </form>
 
 </body>
