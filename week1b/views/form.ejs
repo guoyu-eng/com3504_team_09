@@ -18,21 +18,50 @@
 <body>
 <script defer src="week1b/public/javascripts/form.js"></script>
 
+<form id="birdForm" name = "birdForm" onSubmit="birdUpload(); return false" >
+    <label for="name">name</label>
+    <input type="text" id="name" name="name" value="" />
+
+    <p><label for="data">data</label>
+        <input type="text" id="data" name="data" value="" />
+    </p>
+    <p><label for="location">location</label>
+        <input type="text" id="location" name="location" value="" />
+    </p>
+    <p><label for="addr">Address (from Map)</label>
+        <input type="text" id="addr" name="addr" value="" readonly/>
+    </p>
+    <p><label for="latlng">Latitude/Longitude (from Map)</label>
+        <input type="text" id="latlng" name="Latitude/Longitude" value="" readonly/>
+    </p>
+    <p class="invisible-field"><label for="lat">Lat (should be hidden)</label>
+        <input type="text" id="lat" name="lat" value="" readonly/>
+    </p>
+    <p class="invisible-field"><label for="lng">Lng (should be hidden)</label>
+        <input type="text" id="lng" name="lng" value="" readonly/>
+    </p>
+    <div id="map"></div>
+
+    <label for="category">category</label>
+    <select id="category" name="category">
+        <option value="c" selected>A</option>
+        <option value="f">B</option>
+        <option value="k">C</option>
+    </select>
 
 
+    <label for="inputImage">Please upload your images in here</label>
+    <div >
+        <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" />
+        <!--        <input type="file" id="inputImage" name="inputImg" value="choose" accept="image/*" required >-->
+    </div>
 
 
+    <p><label for="details">details</label>
+        <textarea id="details" name="details" rows="10" cols="50"></textarea>
+    </p>
 
-
-
-
-
-
-
-
-
-
-
-
+    <p><input type="button" , value = "ok" onclick="birdUpload()"></p>
+</form>
 
 </body>
