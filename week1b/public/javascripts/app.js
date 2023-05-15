@@ -47,7 +47,7 @@ function loadData(forceReload){
 function retrieveAllCitiesData(birdList, forceReload){
     refreshBirdList();
     for (let index in birdList)
-        loadBirdyData(birdList[index], forceReload);
+        loadBirdData(birdList[index], forceReload);
 }
 
 /**
@@ -132,10 +132,7 @@ function addToResults(dataR) {
         row.innerHTML = "<div class='card-block'>" +
             "<div class='row'>" +
             "<div class='col-sm'>" + dataR.location + "</div>" +
-            "<div class='col-sm'>" + getForecast(dataR.forecast) + "</div>" +
-            "<div class='col-sm'>" + getTemperature(dataR) + "</div>" +
-            "<div class='col-sm'>" + getPrecipitations(dataR) + "</div>" +
-            "<div class='col-sm'>" + getWind(dataR) + "</div>" +
+
             "<div class='col-sm'></div></div></div>";
     }
 }
@@ -167,8 +164,8 @@ window.addEventListener('offline', function(e) {
  * @param city
  * @param date
  */
-function selectCity(name) {
-    var birdList=JSON.parse(localStorage.getItem('cities'));
+function selectBird(bird) {
+    var birdList=JSON.parse(localStorage.getItem('birds'));
     if (birdList==null) birdList=[];
     birdList.push(bird);
     birdList = removeDuplicates(birdList);
@@ -238,7 +235,7 @@ function birdUpload(){
     var name = document.getElementById('name').value;
     var data = document.getElementById('data').value;
     var location = document.getElementById('location').value;
-    var addr = document.getElementById('addr').value;
+
     var latlng = document.getElementById('latlng').value;
     var lat = document.getElementById('lat').value;
     var lng = document.getElementById('lng').value;
@@ -249,7 +246,7 @@ function birdUpload(){
         name: name,
         data: data,
         location: location,
-        addr: addr,
+
         latlng: latlng,
         lat: lat,
         lng: lng,

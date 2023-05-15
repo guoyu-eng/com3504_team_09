@@ -1,6 +1,6 @@
 ////////////////// DATABASE //////////////////
 // the database receives from the server the following structure
-import * as idb from './idb/index.js';
+import * as idb from '../idb/index.js';
 
 /** class BirdWatchinig{
  *  constructor (name, details, inputImg, lat, lnt, addr) {
@@ -48,6 +48,7 @@ window.initDatabase= initDatabase;
 async function storeCachedData(birdName, birdObject) {
     console.log('inserting: '+JSON.stringify(birdObject));
     if (!db)
+        console.log('await...')
         await initDatabase();
     if (db) {
         try{
