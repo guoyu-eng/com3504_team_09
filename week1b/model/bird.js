@@ -7,7 +7,7 @@ var BirdSchema = new Schema({
     inputImg: { type: String },
     lat: { type: Number, required: false},
     lng: { type: Number},
-    addr: { type: String, required: true}
+    //addr: { type: String, required: true}
 
 });
 

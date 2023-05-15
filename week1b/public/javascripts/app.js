@@ -1,11 +1,3 @@
-
-const CLOUDY = 0;
-const CLEAR = 1;
-const RAINY = 2;
-const OVERCAST = 3;
-const SNOWY = 4;
-
-
 /**
  * called by the HTML onload
  * showing any cached forecast data and declaring the service worker
@@ -33,7 +25,6 @@ function initBirdWatching() {
  */
 function loadData(forceReload){
     var birdList=JSON.parse(localStorage.getItem('name'));
-    birdList=removeDuplicates(birdList);
     retrieveAllCitiesData(birdList, forceReload);
 }
 
@@ -137,6 +128,15 @@ function addToResults(dataR) {
     }
 }
 
+function storeToIDB(){
+    let name = document.getElementById('name').value;
+    let details = document.getElementById('details').value;
+    let inputImg = document.getElementById('inputImage').value;
+    let lat = document.getElementById('lat').value;
+    let lng = document.getElementById('lng').value;
+    let latlng = document.getElementById('latlng').value;
+}
+
 
 /**
  * it removes all forecasts from the result div
@@ -145,18 +145,6 @@ function refreshBirdList(){
     if (document.getElementById('results')!=null)
         document.getElementById('results').innerHTML='';
 }
-
-
-/**
- * When the client gets off-line, it shows an off line warning to the user
- * so that it is clear that the data is stale
- */
-window.addEventListener('offline', function(e) {
-    // Queue up events for server.
-    console.log("You are offline");
-    showOfflineWarning();
-}, false);
-
 
 /**
  * it enables selecting the city from the drop down menu
@@ -168,7 +156,6 @@ function selectBird(bird) {
     var birdList=JSON.parse(localStorage.getItem('birds'));
     if (birdList==null) birdList=[];
     birdList.push(bird);
-    birdList = removeDuplicates(birdList);
     localStorage.setItem('cities', JSON.stringify(birdList));
     retrieveAllCitiesData(birdList, true);
 }
@@ -213,22 +200,6 @@ function hideOfflineWarning(){
 function showBirdList() {
     if (document.getElementById('bird_list')!=null)
         document.getElementById('bird_list').style.display = 'block';
-}
-
-
-
-/**
- * Given a list of cities, it removes any duplicates
- * @param cityList
- * @returns {Array}
- */
-function removeDuplicates(birdList) {
-    // remove any duplicate
-    var uniqueNames=[];
-    $.each(birdList, function(i, el){
-        if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
-    });
-    return uniqueNames;
 }
 
 function birdUpload(){

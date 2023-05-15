@@ -1,4 +1,5 @@
 // const image = require('../model/image');
+// const image = require('../model/image');
 var bodyParser = require("body-parser");
 var Bird = require('../model/bird');
 var path = require('path');

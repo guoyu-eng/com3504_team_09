@@ -7,7 +7,7 @@ var router = express.Router();
 
 
 const fs = require('fs');
-const uploadDir = 'D:\\Websotrm\\com3504_team_09\\week1b\\public\\uploads';
+const uploadDir = './uploads';
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
