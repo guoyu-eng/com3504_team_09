@@ -2,6 +2,8 @@
  * called by the HTML onload
  * showing any cached forecast data and declaring the service worker
  */
+
+
 function initBirdWatching() {
     //check for support
     if ('indexedDB' in window) {
@@ -135,6 +137,9 @@ function storeToIDB(){
     let lat = document.getElementById('lat').value;
     let lng = document.getElementById('lng').value;
     let latlng = document.getElementById('latlng').value;
+
+    storeCachedData(name, details, inputImg, lat, lng, latlng);
+    alert("Successfully created story");
 }
 
 

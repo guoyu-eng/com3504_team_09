@@ -43,10 +43,11 @@ window.initDatabase= initDatabase;
 /**
  * it saves the forecasts for a city in localStorage
  * @param birdName
+ * @param details
  * @param birdObject
  */
-async function storeCachedData(birdName, birdObject) {
-    console.log('inserting: '+JSON.stringify(birdObject));
+async function storeCachedData(name, details, inputImg, lat, lng, latlng) {
+    console.log('inserting: ');
     if (!db)
         console.log('await...')
         await initDatabase();
@@ -54,17 +55,24 @@ async function storeCachedData(birdName, birdObject) {
         try{
             let tx = await db.transaction(BIRD_STORE_NAME, 'readwrite');
             let store = await tx.objectStore(BIRD_STORE_NAME);
-            await store.put(birdObject);
+            await store.put({
+                name: name,
+                details: details,
+                inputImg: inputImg,
+                lat: lat,
+                lng: lng,
+                latlng: latlng
+            });
             await  tx.complete;
-            console.log('added item to the store! '+ JSON.stringify(birdObject));
+            console.log('added item to the store! ');
         } catch(error) {
-            localStorage.setItem(name, JSON.stringify(birdObject));
+            console.log(error);
         };
     }
-    else localStorage.setItem(name, JSON.stringify(birdObject));
 }
 
 window.storeCachedData=storeCachedData;
+
 
 /**
  * it retrieves the forecasts data for a city from the database
@@ -80,7 +88,7 @@ async function getCachedData(birdName) {
             let tx = await db.transaction(BIRD_STORE_NAME, 'readonly');
             let store = await tx.objectStore(BIRD_STORE_NAME);
             let index = await store.index('name');
-            let readingsList = await index.getAll();
+
             await tx.complete;
         }catch (error) {
             console.log(error);
