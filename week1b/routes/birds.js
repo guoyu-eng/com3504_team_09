@@ -13,7 +13,7 @@ router.post('/bird',function(req, res, next){
         id: Date.now(),
         lat : req.body.lat,
         lng : req.body.lng,
-        address: req.body.addr
+        //address: req.body.addr
 
     }
     model.connect(function(db){
