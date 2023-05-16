@@ -17,7 +17,7 @@ exports.getBirds = (req, res) => {
                     return Bird.insertMany(birds);
                 })
                 .then(() => {
-                    res.render('add_picture', { bird: birds });
+                    res.render('index', { bird: birds });
                 })
                 .catch(err => {
                     console.log(err);

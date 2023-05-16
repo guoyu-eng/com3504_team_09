@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<p>user can add the picture in there</p>
+<p></p>
 
 
 <div class="card mb-3" style="width: 100%;">
@@ -55,8 +55,6 @@
     <% if (typeof bird !== 'undefined') { %>
         <% let i = 0; %>
         <% for (const name in bird) { %>
-            <% console.log('test', bird[name]) %>
-            <% console.log('testing', bird[name].inputImg) %>
             <% let thisID = "bird-info-" + i %>
             <div class="bird-info" id="<%= thisID %>">
                 <ul>
@@ -74,10 +72,10 @@
                         <span class="list-value"> <%= bird[name].addr %> </span></li>
 
                     <li><span class="list-title"><strong>image:</strong></span>
-                       <!-- <img src="/uploads/1680800565871.jpg" alt="Bird Image"> -->
+                        <!-- <img src="/uploads/1680800565871.jpg" alt="Bird Image"> -->
                         <img src="<%= bird[name].inputImg %>" alt="Bird Image"></li>
 
-                    <a href="/function/birdedit?id=<%= bird._id %>" class="btn btn-success">fixed</a>
+                    <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success" onclick="showImage('<%= bird[name].inputImg %>')">showing</a>
                     <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>
                 </ul>
             </div>
@@ -91,17 +89,12 @@
 
 
 
-<form action="add_picture" method="POST">
+<div class="button-container">
+    <form action="add_picture" method="POST">
+        <input type="submit" value="Add">
+    </form>
 
-
-    <input type="submit" value="add" ></form>
-</form>
-<form action="details" method="POST">
-
-
-    <input type="submit" value="details" ></form>
-</form>
-<!--<script src="../public/javascripts/birdInformation.js.js"></script>-->
+</div>
 
 <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY&callback=initMap&v=weekly&region=UK"

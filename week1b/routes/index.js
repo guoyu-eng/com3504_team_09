@@ -28,21 +28,9 @@ var storage = multer.diskStorage({
     cb(null, filename);
   }
 });
+console.log('File upload middleware called');
 var upload = multer({ storage: storage });
 
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'public/uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     var original = file.originalname;
-//     var file_extension = original.split(".");
-//     // Make the file name the date + the file extension
-//     filename =  Date.now() + '.' + file_extension[file_extension.length-1];
-//     cb(null, filename);
-//   }
-// });
-// var upload = multer({ storage: storage });
 
 
 
@@ -63,7 +51,7 @@ var upload = multer({ storage: storage });
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'bird Class', login_is_correct:true });
+  res.render('index', { title: 'bird Class' });
 });
 
 
@@ -78,9 +66,26 @@ router.get('/add_picture', function(req, res, next) {
   res.render('add_picture', { title: 'add_picture'});
 });
 
-router.get('/details', function(req, res, next) {
-  res.render('details', { title: 'details'});
+// router.get('/details', function(req, res, next) {
+//   res.render('details', { title: 'details'});
+// });
+const Bird = require('../model/bird');
+
+
+router.get('/details', function(req, res) {
+  const id = req.query.id;
+  Bird.findOne({ _id: id }).exec()
+      .then(bird => {
+        res.render('details', { title: 'add_picture', bird: bird });
+      })
+      .catch(err => {
+        throw err;
+      });
 });
+
+
+
+
 
 
 // router.get('/add_picture', birdModel.listAll);
