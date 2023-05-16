@@ -7,6 +7,9 @@ var router = express.Router();
 var showindex = require('../controller/showindex');
 const birdController = require('../controller/deleteBird');
 
+const changeName = require('../controller/changeName');
+
+
 
 
 const fs = require('fs');
@@ -113,9 +116,8 @@ router.get('/details', function(req, res) {
 // });
 
 router.post('/bird', upload.single('inputImg'), function(req, res) {
+  // analysis object and save to database. And check the uploaded files
   birdModel.create(req, res);
-  // readbird.getBirds(req, res);
-
   if (!req.file) {
     console.log('Error: no file uploaded');
     return res.status(400).send('Error: no file uploaded');
@@ -137,6 +139,9 @@ router.post('/add_picture', function(req, res, next) {
 router.post('/details', function(req, res, next) {
   res.render('details', { title: "" });
 });
+
+
+router.post('/change_name', changeName.changeName);
 
 
 

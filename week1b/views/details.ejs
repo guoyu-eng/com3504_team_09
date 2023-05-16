@@ -41,7 +41,17 @@
             <div class="card">
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Name:</strong> <%= bird.name %></li>
+                        <li class="list-group-item"><strong>Name:</strong>
+                            <span class="ms-2" onclick="updateName(this.previousElementSibling.innerText)">
+                                <%= bird.name %>
+                                <span class="bi bi-pencil-square"></span>
+<!--                                <button type="submit" class="btn btn-primary">Change</button>-->
+
+                            </span>
+                        </li>
+
+
+
                         <li class="list-group-item"><strong>Date:</strong> <%= bird.date %></li>
                         <li class="list-group-item"><strong>Details:</strong> <%= bird.details %></li>
                         <li class="list-group-item"><strong>Location:</strong> <%= bird.location %></li>
@@ -51,9 +61,38 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Change Name</h3>
+                    <form method="POST" action="/change_name">
+                        @csrf
+                        <div class="form-group">
+                            <label for="newName">New Name:</label>
+                            <input type="text" class="form-control" id="newName" name="newName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname">Nickname:</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" required>
+                        </div>
+                        <input type="hidden" name="changeid" value="<%= bird.id.toString() %>">
+                        <button type="submit" class="btn btn-primary">Change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 
 <script src="../public/javascripts/details.js"></script>
+<script src="../public/javascripts/changeName.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/bootstrap-icons.min.js"></script>
+
 </body>
 </html>

@@ -22,7 +22,7 @@ exports.deleteBird = function (req, res) {
 
         console.log('bird:', bird);
 
-        // 如果有相关的图像文件，从服务器上删除
+        //
         if (bird.inputImg) {
             console.log('deleting image:', bird.inputImg);
             fs.unlink(`public${bird.inputImg}`, function(err) {
@@ -39,7 +39,7 @@ exports.deleteBird = function (req, res) {
             }
 
             console.log('Bird deleted successfully.');
-            return res.redirect('/'); // 删除成功后重定向到主页
+            return res.redirect('/'); //
         });
     });
 }

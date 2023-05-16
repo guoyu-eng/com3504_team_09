@@ -3,7 +3,6 @@
 <head>
 
   <link rel='stylesheet' href='/stylesheets/show.css'>
-  <!--    <script type="application/javascript" src="/javascripts/index.js"></script>-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
@@ -35,38 +34,11 @@
         <button type="submit" class="btn btn-primary">search</button>
       </form>
       <div>
-        <a href="/product/previous" class="btn btn-success mr-2">next</a>
-        <a href="/product/next" class="btn btn-danger">previous</a>
+
       </div>
     </li>
   </ul>
 </div>
-
-<% if (typeof bird !== 'undefined') { %>
-  <% for (const name in bird) { %>
-    <div class="bird-info">
-      <ul>
-        <li><strong>Name:</strong> <%= bird[name].name %></li>
-        <li><strong>Date:</strong> <%= bird[name].date %></li>
-        <li><strong>Details:</strong> <%= bird[name].details %></li>
-        <li><strong>Location:</strong> <%= bird[name].location %></li>
-        <li><strong>image:</strong>
-          <script>console.log("test")</script>
-          <!-- <img src="/uploads/1680800565871.jpg" alt="Bird Image"> -->
-          <img src="<%= bird[name].inputImg %>" alt="Bird Image"></li>
-
-        <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success" onclick="showImage('<%= bird[name].inputImg %>')">showing</a>
-
-<!--        <a href="/function/birddelet?id=<%= bird._id %>" class="btn btn-success">deleted</a>-->
-
-<!--        <a href="#" class="btn btn-danger" onclick="deleteBird('<%= bird[name]._id %>', '<%= bird[name].inputImg %>')">Delete</a>-->
-
-      </ul>
-    </div>
-  <% } %>
-<% } else { %>
-  <p>Bird not found.</p>
-<% } %>
 
 
 <div class="button-container">
@@ -75,6 +47,37 @@
   </form>
 
 </div>
+
+<% if (typeof bird !== 'undefined') { %>
+  <div class="row">
+    <% for (const name in bird) { %>
+      <div class="col-md-4 bird-info">
+        <ul>
+          <li class="bird-name"><strong>Name:</strong> <%= bird[name].name %></li>
+          <li><strong>Date:</strong> <%= bird[name].date %></li>
+<!--          <li><strong>Details:</strong> <%= bird[name].details %></li>-->
+<!--          <li><strong>Location:</strong> <%= bird[name].location %></li>-->
+          <li><strong>Image:</strong>
+<!--            <script>console.log("test")</script>-->
+            <div class="image-container">
+              <img src="<%= bird[name].inputImg %>" alt="Bird Image" onclick="showImage('<%= bird[name].inputImg %>')">
+              <div class="image-overlay">
+                <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success">Showing</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <% if ((parseInt(name) + 1) % 3 === 0) { %>
+  </div><div class="row">
+    <% } %>
+    <% } %>
+  </div>
+<% } else { %>
+  <p>Bird not found.</p>
+<% } %>
+
+
 <script>
   function deleteBird(id, imgPath) {
     var xhr = new XMLHttpRequest();
