@@ -20,11 +20,18 @@
 </head>
 <body>
 
-<p></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
 
 
 <div class="card mb-3" style="width: 100%;">
-  <div class="card-header">search</div>
+<!--  <div class="card-header">search</div>-->
   <ul class="list-group list-group-flush">
     <li class="list-group-item" style="display:flex;justify-content:space-between;align-items:center;">
       <form class="form-inline" enctype="multipart/form-data" action="/product/search" method="GET">
@@ -36,9 +43,9 @@
         </select>
 
         <select class="form-control mx-2" name="name" id="name">
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
+          <option value="A">Terrestrial birds</option>
+          <option value="B">Aquatic birds</option>
+          <option value="C">Aerial birds</option>
         </select>
 
         <button type="submit" class="btn btn-primary">search</button>
