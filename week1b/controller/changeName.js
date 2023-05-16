@@ -1,4 +1,12 @@
-// use to change the Name is user know the nickname when they create it
+/**
+
+ Changes the name of a bird based on the provided information.
+ @param {Object} req - The request object.
+ @param {Object} res - The response object.
+ @param {Function} next - The next middleware function.
+ @returns {void}
+ @throws {Error} If an error occurs while executing the function.
+ */
 const Bird = require('../model/bird');
 const birdController = require('./readbird');
 

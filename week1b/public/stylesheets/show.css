@@ -2,13 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 25%;
+
     margin: 0 auto;
     border: 1px solid #ccc;
     padding: 10px;
     /*margin-bottom: 20px;*/
 }
+.row:nth-child(even) .bird-info:nth-child(odd),
+.row:nth-child(odd) .bird-info:nth-child(even) {
+    margin-right: 20px;
 
+}
 
 
 
@@ -34,7 +39,7 @@
 }
 
 .bird-info {
-    width: 33.33%;
+
     box-sizing: border-box;
     padding: 10px;
 }

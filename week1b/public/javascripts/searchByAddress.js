@@ -1,3 +1,7 @@
+/**
+
+ Initializes the map and sets up the geocoder buttons.
+ */
 let map;
 let marker;
 let geocoder;

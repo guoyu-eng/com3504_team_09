@@ -1,3 +1,8 @@
+/**
+
+ Initializes the Google Map and sets up click event listener to retrieve latitude and longitude information.
+ */
+
 let map;
 
 async function initMap() {

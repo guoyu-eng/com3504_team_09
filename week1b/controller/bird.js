@@ -1,13 +1,17 @@
-// const image = require('../model/image');
+/**
+
+ Create a new bird entry in the database based on the provided user data.
+ @param {Object} req - The request object.
+ @param {Object} res - The response object.
+ @returns {void}
+ @throws {Error} If an error occurs while executing the function.
+ */
+
 var bodyParser = require("body-parser");
 var Bird = require('../model/bird');
 var path = require('path');
-// var req = require('request');
 var readbird = require('../controller/readbird');
 const fs = require('fs');
-
-
-
 
 
 exports.create = function (req, res) {
@@ -20,7 +24,6 @@ exports.create = function (req, res) {
         details: userData.details,
         date: date1,
         Nickname : userData.Nickname,
-        // location: userData.location,
         inputImg: trimmmedImgFilePath,
         lat: userData.lat,
         lng: userData.lng,
@@ -28,20 +31,14 @@ exports.create = function (req, res) {
     });
 
 
-    // console.log("Input image path:", req.file.path);
-
     birdsave.save()
         .then(savedBird => {
             const options = { async: true };
             const birdObject = savedBird.toObject();
-            // console.log('Saved bird:', savedBird.toObject());
-            // console.log('Date:', savedBird.date);
-
             return readbird.getBirds(req, res);
         })
         .then(() => {
             // do something else after getBirds has finished
-
         })
         .catch(error => {
             console.error(error);
