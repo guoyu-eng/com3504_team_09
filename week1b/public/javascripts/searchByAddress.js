@@ -123,16 +123,18 @@ function sortBirds(chosenLat, chosenLng) {
     let birdListing = [[]];
     //get the lat/lng values for each bird in the db
     for (let i=0; i<$('.bird-info').length; i++) {
-        birdListing[i] = [i, $('#bird-info-' + i + ' #lat .list-value').text().trim(),
-            $('#bird-info-' + i + ' #lng .list-value').text().trim(), 12756]
+        birdListing[i] = [i, $('#bird-info-' + i + ' .lat .list-value').text().trim(),
+            $('#bird-info-' + i + ' .lng .list-value').text().trim(), 12756]
         if (birdListing[i][1] !== "" && birdListing[i][2] !== "") {
             haversine(chosenLat, chosenLng, birdListing, i)
             let roundedDist = birdListing[i][3].toFixed(1)
-            let distanceEl = document.createElement("li");
-            distanceEl.innerHTML = `<span><strong>Distance:</strong> <span>${roundedDist}km</span></span>`;
+            //let distanceEl = document.createElement("li");
+            //distanceEl.innerHTML = `<span><strong>Distance:</strong> <span>${roundedDist}km</span></span>`;
             // change so that distance is updated instead of adding a new element, the second time it is updated
-            distanceEl.classList.add("distance");
-            $('#bird-info-' + i + " ul #address").after(distanceEl);
+            //distanceEl.classList.add("distance");
+            $(".distance").removeClass("hidden");
+            $('#bird-info-' + i + " ul .distance .list-value").text(roundedDist+"km")
+            //$('#bird-info-' + i + " ul #address").after(distanceEl);
         }
     }
     birdListing.sort(compareDistances)

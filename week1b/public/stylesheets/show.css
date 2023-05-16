@@ -44,6 +44,13 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.distance.hidden {
+    visibility: hidden;
+    max-height: 0;
+    margin-bottom: 0;
+
+}
+
 /* 设置搜索表单样式 */
 .form-inline {
     display: flex;

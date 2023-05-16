@@ -16,18 +16,18 @@
 
 <form action="bird" method="POST" enctype="multipart/form-data">
     <label for="name">name</label>
-    <input type="text" id="name" name="name" value="" />
+    <input type="text" id="name" name="name" value="" required/>
 
     <p><label for="date">date</label>
-        <input type="date" id="date" name="date" value="" />
+        <input type="date" id="date" name="date" value="" required/>
     </p>
     <p><label for="location">location</label>
-        <input type="text" id="location" name="location" value="" />
+        <input type="text" id="location" name="location" value="" required/>
     </p>
-    <p><label for="addr">Address (from Map)</label>
-        <input type="text" id="addr" name="addr" value="" readonly/>
+    <p><label for="addr">Address - select on the map</label>
+        <input type="text" id="addr" name="addr" value="" readonly required/>
     </p>
-    <p><label for="latlng">Latitude/Longitude (from Map)</label>
+    <p class="invisible-field"><label for="latlng">Latitude/Longitude (from Map)</label>
         <input type="text" id="latlng" name="Latitude/Longitude" value="" readonly/>
     </p>
     <p class="invisible-field"><label for="lat">Lat (should be hidden)</label>
@@ -39,7 +39,7 @@
     <div id="map"></div>
 
     <label for="category">category</label>
-    <select id="category" name="category">
+    <select id="category" name="category" required>
         <option value="c" selected>A</option>
         <option value="f">B</option>
         <option value="k">C</option>
@@ -48,13 +48,13 @@
 
     <label for="inputImage">Please upload your images in here</label>
     <div >
-        <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" />
+        <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" required/>
         <!--        <input type="file" id="inputImage" name="inputImg" value="choose" accept="image/*" required >-->
     </div>
 
 
     <p><label for="details">details</label>
-        <textarea id="details" name="details" rows="10" cols="50"></textarea>
+        <textarea id="details" name="details" rows="10" cols="50" required></textarea>
     </p>
 
     <p><input type="submit" , value = " ok"></p>
