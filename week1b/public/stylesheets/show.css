@@ -94,6 +94,32 @@
 img {
     max-width: 100%;
     height: auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form {
+    margin: 0 10px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0062cc;
 
 }
 
@@ -122,4 +148,3 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0062cc;
 }
-

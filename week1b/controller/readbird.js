@@ -29,3 +29,4 @@ exports.getBirds = (req, res) => {
             res.status(500).send('Error retrieving birds from database.');
         });
 };
+

@@ -19,6 +19,4 @@ router.post('/bird',function(req, res, next){
         })
     })
 })
-
-
 module.exports = router;
