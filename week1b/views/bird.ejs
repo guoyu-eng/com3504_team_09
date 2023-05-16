@@ -11,19 +11,41 @@
 
 </head>
 <body>
-<h1>brid</h1>
-<p>show the bird information in there </p>
+<!--<h1>brid</h1>-->
+<!--<p>show the bird information in there </p>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/bird">Bird page</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
 
 <form action="bird" method="POST" enctype="multipart/form-data">
     <label for="name">name</label>
     <input type="text" id="name" name="name" value="" required/>
 
+    <p><label for="Nickname">Nickname(remember to this )</label>
+        <input type="text" id="Nickname" name="Nickname" value="" />
+    </p>
+
     <p><label for="date">date</label>
-        <input type="date" id="date" name="date" value="" required/>
+        <input type="date" id="date" name="date" value="" />
     </p>
-    <p><label for="location">location</label>
-        <input type="text" id="location" name="location" value="" required/>
-    </p>
+<!--    <p><label for="location">location</label>-->
+<!--        <input type="text" id="location" name="location" value="" required/>-->
+<!--    </p>-->
     <p><label for="addr">Address - select on the map</label>
         <input type="text" id="addr" name="addr" value="" readonly required/>
     </p>
@@ -40,9 +62,9 @@
 
     <label for="category">category</label>
     <select id="category" name="category" required>
-        <option value="c" selected>A</option>
-        <option value="f">B</option>
-        <option value="k">C</option>
+        <option value="c" selected>Terrestrial birds</option>
+        <option value="f">Aquatic birds</option>
+        <option value="k">Aerial birds</option>
     </select>
 
 

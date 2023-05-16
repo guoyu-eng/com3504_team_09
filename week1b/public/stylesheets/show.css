@@ -148,3 +148,47 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0062cc;
 }
+
+
+.row {
+    margin: 10px 0;
+}
+
+.bird-info {
+    padding: 10px;
+}
+
+.image-container {
+    position: relative;
+    width: calc(80% - 20px);
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay .btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+

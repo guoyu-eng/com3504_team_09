@@ -4,11 +4,12 @@ const BirdSchema = new mongoose.Schema({
     name: { type: String, required: true, max: 10 },
     details: { type: String, required: true },
     inputImg: { type: String },
-    date: { type: Date, required: true },
-    location: { type: String, required: true },
+    date: { type: Date },
+    Nickname: { type: String,  max: 10, required: true},
+    // location: { type: String, required: true },
     lat: { type: Number, required: false},
     lng: { type: Number},
-    addr: { type: String, required: true}
+    addr: { type: String }
 
 });
 

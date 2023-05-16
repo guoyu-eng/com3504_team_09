@@ -14,27 +14,19 @@ exports.create = function (req, res) {
     delete res.locals.bird;
     const userData = req.body
     let trimmmedImgFilePath = req.file.path.substring(7)
-    console.log(userData);
-
-    console.log("撒打算大:", userData.date);
-    console.log("撒打算大:", new Date(userData.date));
     const date1 = new Date(userData.date);
-
-    const date2 = date1.toISOString();
-
     const birdsave = new Bird({
         name: userData.name,
         details: userData.details,
-        date: date2,
-        location: userData.location,
+        date: date1,
+        Nickname : userData.Nickname,
+        // location: userData.location,
         inputImg: trimmmedImgFilePath,
         lat: userData.lat,
         lng: userData.lng,
         addr: userData.addr
     });
-    console.log("阿的酸辣粉");
 
-    console.log(birdsave);
 
     // console.log("Input image path:", req.file.path);
 

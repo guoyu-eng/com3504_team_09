@@ -4,8 +4,8 @@ var birdModel = require('../controller/bird');
 var readbird = require('../controller/readbird');
 var multer = require('multer');
 var router = express.Router();
-
-
+var showindex = require('../controller/showindex');
+const changeName = require('../controller/changeName');
 const fs = require('fs');
 const uploadDir = 'public/uploads/';
 
@@ -51,7 +51,7 @@ var upload = multer({ storage: storage });
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'bird Class' });
+  readbird.getBirds(req, res);
 });
 
 
@@ -122,7 +122,7 @@ router.post('/details', function(req, res, next) {
   res.render('details', { title: "" });
 });
 
-
+router.post('/change_name', changeName.changeName);
 
 
 module.exports = router;
