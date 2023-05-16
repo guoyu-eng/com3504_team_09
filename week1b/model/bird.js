@@ -10,12 +10,12 @@ const BirdSchema = new mongoose.Schema({
     lng: { type: Number},
     addr: { type: String, required: true}
 
+
 });
 
 const Bird = mongoose.model('Bird', BirdSchema);
 
 module.exports = Bird;
-
 
 
 
