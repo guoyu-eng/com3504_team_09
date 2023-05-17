@@ -9,7 +9,15 @@
     <script type="module" src="javascripts/gmaps.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/gmaps.css">
 
+    <script type="module" src="/javascripts/idb/index.js"></script>
+
+    <script src="javascripts/database.js" type="module"></script>
+    <script src="javascripts/app.js"></script>
+
 </head>
+
+<body onload="initBirdWatching()">
+
 <body>
 <!--<h1>brid</h1>-->
 <!--<p>show the bird information in there </p>-->
@@ -80,7 +88,7 @@
         <textarea id="details" name="details" rows="10" cols="50" required></textarea>
     </p>
 
-    <p><input type="submit" , value = " ok"></p>
+    <p><input type="submit" onclick="storeToIDB()" value = "ok"></p>
 </form>
 
 <script type="application/javascript" src="/javascripts/index.js"></script>
