@@ -15,8 +15,8 @@ To install the project, follow these steps:
 You can use this link
 
 <pre>
-```bash
-[git clone https://github.com/your-username/your-repo.git](https://github.com/guoyu-eng/com3504_team_09/commits/main)
-```
+
+[git clone https://github.com/your-username/your-repo.git](https://github.com/guoyu-eng/com3504_team_09/commits/main)](https://github.com/guoyu-eng/com3504_team_09/commits/main)
+
 </pre>
 
