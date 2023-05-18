@@ -16,7 +16,11 @@ You can use this link
 
 <pre>
 
-[git clone https://github.com/your-username/your-repo.git](https://github.com/guoyu-eng/com3504_team_09/commits/main)](https://github.com/guoyu-eng/com3504_team_09/commits/main)
+https://github.com/guoyu-eng/com3504_team_09/commits/main
+
+[git clone https://github.com/your-username/your-repo.git]
+(https://github.com/guoyu-eng/com3504_team_09/commits/main)]
+(https://github.com/guoyu-eng/com3504_team_09/commits/main)
 
 </pre>
 
