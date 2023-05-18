@@ -1,5 +1,5 @@
 # com3504_team_09
-# My Project
+# Our Project
 
 This is a description of us project.
 
