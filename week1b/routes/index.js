@@ -7,7 +7,7 @@ var router = express.Router();
 var showindex = require('../controller/showindex');
 const changeName = require('../controller/changeName');
 const fs = require('fs');
-const uploadDir = './uploads/';
+const uploadDir = 'public/uploads/';
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
