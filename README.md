@@ -23,4 +23,17 @@ https://github.com/guoyu-eng/com3504_team_09/commits/main
 (https://github.com/guoyu-eng/com3504_team_09/commits/main)
 
 </pre>
+## Version
+use this command to check the version
+<pre>
+
+node -v
+
+</pre>
+And us project version is 
+<pre>
+
+v19.7.0
+
+</pre>
 
