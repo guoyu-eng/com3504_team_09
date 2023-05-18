@@ -1,14 +1,11 @@
+/**
+ * The main script for the chat application.
+ */
+
+
 let name = null;
 let roomNo = null;
 let socket = io();
-
-
-
-
-
-
-
-
 
 /**
  * called by <body onload>
@@ -16,14 +13,14 @@ let socket = io();
  * plus the associated actions
  */
 function init() {
-    console.log("链接1")
     // it sets up the interface so that userId and room are selected
     document.getElementById('initial_form').style.display = 'block';
     document.getElementById('chat_interface').style.display = 'none';
 
+    let historyDisplayed = false;
+
     // called when someone joins the room. If it is someone else it notifies the joining of the room
     socket.on('joined', function (room, userId) {
-        console.log("链接2")
         if (userId === name) {
             // it enters the chat
             hideLoginInterface(room, userId);
@@ -35,7 +32,6 @@ function init() {
     });
     // called when a message is received
     socket.on('chat', function (room, userId, chatText) {
-        console.log("链接3")
         let who = userId
         if (userId === name) who = 'Me';
         writeOnHistory('<b>' + who + ':</b> ' + chatText);
@@ -44,25 +40,18 @@ function init() {
 
     // called when initial chat history is received from the server
     socket.on('initialChatHistory', function (records) {
-        var historyDiv = document.getElementById('history');
-        console.log("xianshi ")
-
-        // 清空聊天历史记录
-        // historyDiv.innerHTML = '';
-
-        // 将每条聊天记录添加到聊天历史记录中
-        records.forEach(function (record) {
-            var chatItem = document.createElement('div');
-            chatItem.textContent = record;
-            historyDiv.appendChild(chatItem);
-        });
-
-        // 将聊天界面显示出来
+        if (!historyDisplayed) {
+            var historyDiv = document.getElementById('history');
+            records.forEach(function (record) {
+                var chatItem = document.createElement('div');
+                chatItem.textContent = record;
+                historyDiv.appendChild(chatItem);
+            });
+            historyDisplayed = true;
+        }
         var chatInterface = document.getElementById('chat_interface');
         chatInterface.style.display = 'block';
     });
-
-
 }
 
 /**
@@ -80,7 +69,6 @@ function generateRoom() {
  * and sends the message via  socket
  */
 function sendChatText() {
-    console.log("发送")
     let chatText = document.getElementById('chat_input').value;
     let default_details = document.getElementById('default_details').value;
     let default_name = document.getElementById('default_name').value;
@@ -105,7 +93,6 @@ function connectToRoom() {
     let defaultNickname = document.getElementById('default_Nickname').value;
 
     console.log(roomNo, name)
-    console.log("链接成功")
     if (!name) name = 'Unknown-' + Math.random();
     socket.emit('create or join', roomNo, name, default_name,default_details,defaultNickname);
 }
@@ -128,7 +115,6 @@ function writeOnHistory(text) {
  * @param userId the user name
  */
 function hideLoginInterface(room, userId) {
-    console.log("信息")
     document.getElementById('initial_form').style.display = 'none';
     document.getElementById('chat_interface').style.display = 'block';
     // document.getElementById('who_you_are').innerHTML= userId;

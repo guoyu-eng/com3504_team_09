@@ -12,12 +12,6 @@ function  checkForErrors(isLoginCorrect){
 }
 
 
-//const aboutButton = document.getElementById('about-button');
-//aboutButton.addEventListener('click', () => {
-
-//    window.location.href = '/add_picture';
-//});
-
 
 
 

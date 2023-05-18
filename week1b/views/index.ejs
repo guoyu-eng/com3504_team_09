@@ -72,37 +72,27 @@
     <div class="row">
       <% let i = 0; %>
       <% for (const name in bird) { %>
-        <% let thisID = "bird-info-" + i %>
-        <div class="bird-info" id="<%= thisID %>">
-          <ul>
-            <li><span class="list-title"><strong>Name:</strong></span>
-              <span class="list-value"> <%= bird[name].name %> </span></li>
+        <% if (bird[name].inputImg !== null) { %>
+          <% let thisID = "bird-info-" + i %>
+          <div class="bird-info" id="<%= thisID %>">
+            <ul>
+              <li><span class="list-title"><strong>Name:</strong></span>
+                <span class="list-value"> <%= bird[name].name %> </span></li>
               <li><span class="list-title"><strong>Date:</strong></span>
-                  <span class="list-value"> <%= bird[name].date %></span></li>
-<!--              <li><span class="list-title"><strong>Details:</strong></span>-->
-<!--              <span class="list-value"> <%= bird[name].details %> </span></li>-->
+                <span class="list-value"> <%= bird[name].date %></span></li>
+              <!-- Add other fields that you want to display -->
 
-<!--            <li class="lat"><span class="list-title"><strong>Lat:</strong></span>-->
-<!--              <span class="list-value"> <%= bird[name].lat %> </span></li>-->
-<!--            <li class="lng" ><span class="list-title"><strong>Lng:</strong></span>-->
-<!--              <span class="list-value"> <%= bird[name].lng %> </span></li>-->
-<!--            <li class="address"><span class="list-title"><strong>Address:</strong></span>-->
-<!--              <span class="list-value"> <%= bird[name].addr %> </span></li>-->
-            <li class="distance hidden"><span class="list-title"><strong>Distance:</strong></span>
-              <span class="list-value"></span></li>
-<!--            <li><span class="list-title"><strong>image:</strong></span>-->
-
-
-            <li><strong>Image:</strong>
-              <div class="image-container">
-                <img src="<%= bird[name].inputImg %>" alt="Bird Image" onclick="showImage('<%= bird[name].inputImg %>')">
-                <div class="image-overlay">
-                  <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success">Showing</a>
+              <li><strong>Image:</strong>
+                <div class="image-container">
+                  <img src="<%= bird[name].inputImg %>" alt="Bird Image" onclick="showImage('<%= bird[name].inputImg %>')">
+                  <div class="image-overlay">
+                    <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success">Showing</a>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+              </li>
+            </ul>
+          </div>
+        <% } %>
         <% if ((parseInt(name) + 1) % 3 === 0) { %>
     </div><div class="row">
       <% } %>
@@ -111,6 +101,7 @@
   <% } else { %>
     <p>Bird not found.</p>
   <% } %>
+</div>
 
 
 <script
