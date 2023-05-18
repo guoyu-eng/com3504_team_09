@@ -20,4 +20,3 @@ function  checkForErrors(isLoginCorrect){
 
 
 
-

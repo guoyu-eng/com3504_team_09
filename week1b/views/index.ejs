@@ -31,7 +31,7 @@
 
 
 <div class="card mb-3" style="width: 100%;">
-<!--  <div class="card-header">search</div>-->
+  <!--  <div class="card-header">search</div>-->
   <ul class="list-group list-group-flush">
     <li class="list-group-item" style="display:flex;justify-content:space-between;align-items:center;">
       <form class="form-inline" enctype="multipart/form-data" action="/product/search" method="GET">
@@ -78,10 +78,19 @@
             <li><span class="list-title"><strong>Name:</strong></span>
               <span class="list-value"> <%= bird[name].name %> </span></li>
               <li><span class="list-title"><strong>Date:</strong></span>
-                  <span class="list-value"> <%= bird[name].date %></span></li>
-<!--              <li><span class="list-title"><strong>Details:</strong></span>-->
-<!--              <span class="list-value"> <%= bird[name].details %> </span></li>-->
+                <span class="list-value"> <%= bird[name].date %></span></li>
+              <!--              <li><span class="list-title"><strong>Details:</strong></span>-->
+              <!--              <span class="list-value"> <%= bird[name].details %> </span></li>-->
 
+              <li class="lat hidden"><span class="list-title"><strong>Lat:</strong></span>
+                <span class="list-value"> <%= bird[name].lat %> </span></li>
+              <li class="lng hidden" ><span class="list-title"><strong>Lng:</strong></span>
+                <span class="list-value"> <%= bird[name].lng %> </span></li>
+              <li class="address hidden"><span class="list-title"><strong>Address:</strong></span>
+                <span class="list-value"> <%= bird[name].addr %> </span></li>
+              <li class="distance hidden"><span class="list-title"><strong>Distance:</strong></span>
+                <span class="list-value"></span></li>
+              <!--            <li><span class="list-title"><strong>image:</strong></span>-->
             <li class="lat hidden"><span class="list-title"><strong>Lat:</strong></span>
               <span class="list-value"> <%= bird[name].lat %> </span></li>
             <li class="lng hidden" ><span class="list-title"><strong>Lng:</strong></span>
@@ -102,16 +111,18 @@
               </div>
             </li>
           </ul>
-        </div>
-        <% if ((parseInt(name) + 1) % 3 === 0) { %>
-    </div><div class="row">
-      <% } %>
-      <%= i++ %>
-      <% } %>
     </div>
-  <% } else { %>
-    <p>Bird not found.</p>
+    <% if ((parseInt(name) + 1) % 3 === 0) { %>
+</div><div class="row">
   <% } %>
+  <%= i++ %>
+  <% } %>
+  <% } %>
+</div>
+<% else { %>
+  <p>Bird not found.</p>
+<% } %>
+</div>
 
 
 <script
