@@ -3,4 +3,14 @@
     max-height: 400px;
 }
 
+#map {
+    height: 250px;
+    width: 300px;
+    margin: auto;
+}
 
+.hidden {
+    visibility: hidden;
+    max-height: 0;
+    margin-bottom: 0;
+}

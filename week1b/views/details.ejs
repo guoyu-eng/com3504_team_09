@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootswatch/5.1.0/cosmo/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/show_page.css'>
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/geocodeMap.css" />
+    <script type="module" src="javascripts/detailsMap.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -41,6 +41,9 @@
             <img src="<%= bird.inputImg %>" alt="Bird Image" class="img-fluid rounded bird-image">
         </div>
     </div>
+    <div class="row" id="map">
+
+    </div>
 
     <div class="row justify-content-center mt-3">
         <div class="col-md-6">
@@ -54,15 +57,13 @@
                         <li><span class="list-title"><strong>Details:</strong></span>
                             <span class="list-value"> <%= bird.details %> </span></li>
 
-                        <li class="lat"><span class="list-title"><strong>Lat:</strong></span>
+                        <li class="lat hidden"><span class="list-title"><strong>Lat:</strong></span>
                             <span class="list-value"> <%= bird.lat %> </span></li>
 
-                        <li class="lng" ><span class="list-title"><strong>Lng:</strong></span>
+                        <li class="lng hidden" ><span class="list-title"><strong>Lng:</strong></span>
                             <span class="list-value"> <%= bird.lng %> </span></li>
                         <li class="address"><span class="list-title"><strong>Address:</strong></span>
                             <span class="list-value"> <%= bird.addr %> </span></li>
-                        <li class="distance hidden"><span class="list-title"><strong>Distance:</strong></span>
-                            <span class="list-value"></span></li>
                         <!--            <li><span class="list-title"><strong>image:</strong></span>-->
 
 
@@ -100,7 +101,6 @@
 
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script type="module" src="javascripts/gmaps.js"></script>
 <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
     ({key: "AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY", v: "weekly"});</script>
 
@@ -110,10 +110,6 @@
 <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
         crossorigin="anonymous"></script>
-
-
-<script type="module" src="javascripts/searchByAddress.js"></script>
-
 
 </body>
 </html>

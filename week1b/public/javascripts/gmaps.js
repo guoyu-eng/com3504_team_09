@@ -13,10 +13,11 @@ async function initMap() {
     map = new Map(document.getElementById("map"), {
         center: { lat: 53.374, lng: -1.698 },
         zoom: 10,
+        streetViewControl: false,
     });
 
     let infoWindow = new google.maps.InfoWindow({
-        content: "Click the map to get Lat/Lng!",
+        content: "Click the map to get the address",
         position: myLatLng,
     });
 
