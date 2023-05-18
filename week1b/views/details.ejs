@@ -13,7 +13,7 @@
 
     <script type="module" src="javascripts/detailsMap.js"></script>
 </head>
-<body>
+<body onload="init()" >
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="#">Bird App</a>
@@ -67,6 +67,11 @@
                         <!--            <li><span class="list-title"><strong>image:</strong></span>-->
 
 
+                        <input type="hidden" id="default_name" value="<%= bird.name %>">
+                        <input type="hidden" id="default_details" value="<%= bird.details %>">
+                        <input type="hidden" id="default_Nickname" value="<%= bird.Nickname %>">
+
+
                     </ul>
                 </div>
             </div>
@@ -97,6 +102,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 
@@ -139,6 +146,12 @@
     </div>
 </div>
 
+
+
+
+
+
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
     ({key: "AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY", v: "weekly"});</script>
@@ -150,12 +163,12 @@
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
         crossorigin="anonymous"></script>
 
-
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 
 <script src="/javascripts/chat.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+
 
 </body>
 </html>
