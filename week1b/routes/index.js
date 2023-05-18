@@ -125,4 +125,16 @@ router.post('/details', function(req, res, next) {
 router.post('/change_name', changeName.changeName);
 
 
+// 假设使用 Express 框架
+
+// 定义 /details/:id 路由的处理程序
+router.get('/details/:id', function(req, res) {
+  const id = req.params.id;
+  console.log("")
+
+  res.render('details', { id: id });
+});
+
+
+
 module.exports = router;
