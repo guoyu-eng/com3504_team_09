@@ -3,7 +3,7 @@
 <head>
     <title>bird</title>
     <link rel='stylesheet' href='/stylesheets/style.css'>
-    <script type="application/javascript" src="/javascripts/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootswatch/5.1.0/cosmo/bootstrap.min.css">
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="module" src="javascripts/gmaps.js"></script>
@@ -11,23 +11,45 @@
 
 </head>
 <body>
-<h1>brid</h1>
-<p>show the bird information in there </p>
+<!--<h1>brid</h1>-->
+<!--<p>show the bird information in there </p>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/bird">Bird page</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
 
 <form action="bird" method="POST" enctype="multipart/form-data">
     <label for="name">name</label>
-    <input type="text" id="name" name="name" value="" />
+    <input type="text" id="name" name="name" value="" required/>
 
-    <p><label for="data">data</label>
-    <input type="text" id="data" name="data" value="" />
+    <p><label for="Nickname">Nickname(remember to this )</label>
+        <input type="text" id="Nickname" name="Nickname" value="" />
     </p>
-    <p><label for="location">location</label>
-        <input type="text" id="location" name="location" value="" />
+
+    <p><label for="date">date</label>
+        <input type="date" id="date" name="date" value="" />
     </p>
-    <p><label for="addr">Address (from Map)</label>
-        <input type="text" id="addr" name="addr" value="" readonly/>
+<!--    <p><label for="location">location</label>-->
+<!--        <input type="text" id="location" name="location" value="" required/>-->
+<!--    </p>-->
+    <p><label for="addr">Address - select on the map</label>
+        <input type="text" id="addr" name="addr" value="" readonly required/>
     </p>
-    <p><label for="latlng">Latitude/Longitude (from Map)</label>
+    <p class="invisible-field"><label for="latlng">Latitude/Longitude (from Map)</label>
         <input type="text" id="latlng" name="Latitude/Longitude" value="" readonly/>
     </p>
     <p class="invisible-field"><label for="lat">Lat (should be hidden)</label>
@@ -39,27 +61,29 @@
     <div id="map"></div>
 
     <label for="category">category</label>
-    <select id="category" name="category">
-        <option value="c" selected>A</option>
-        <option value="f">B</option>
-        <option value="k">C</option>
+    <select id="category" name="category" required>
+        <option value="c" selected>Terrestrial birds</option>
+        <option value="f">Aquatic birds</option>
+        <option value="k">Aerial birds</option>
     </select>
 
 
     <label for="inputImage">Please upload your images in here</label>
     <div >
-    <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" />
-<!--        <input type="file" id="inputImage" name="inputImg" value="choose" accept="image/*" required >-->
+
+        <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" required/>
+        <!--        <input type="file" id="inputImage" name="inputImg" value="choose" accept="image/*" required >-->
     </div>
 
 
     <p><label for="details">details</label>
-        <textarea id="details" name="details" rows="10" cols="50"></textarea>
+        <textarea id="details" name="details" rows="10" cols="50" required></textarea>
     </p>
 
     <p><input type="submit" , value = " ok"></p>
 </form>
 
+<script type="application/javascript" src="/javascripts/index.js"></script>
 <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
     ({key: "AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY", v: "weekly"});</script>
 </body>

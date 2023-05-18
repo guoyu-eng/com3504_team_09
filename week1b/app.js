@@ -20,6 +20,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
+const birdRouter = require('./routes/birds');
+app.use('/bird', birdRouter);
 
 // app.use(express.static('public'));
 

@@ -3,3 +3,9 @@
     width: auto;
     margin: auto;
 }
+
+.invisible-field {
+    display: none;
+    max-height: 0;
+    margin-bottom: 0;
+}

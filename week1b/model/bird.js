@@ -1,28 +1,20 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-var BirdSchema = new Schema({
-    name: { type: String, required: true,max :10 },
+const BirdSchema = new mongoose.Schema({
+    name: { type: String, required: true, max: 10 },
     details: { type: String, required: true },
     inputImg: { type: String },
+    date: { type: Date },
+    userid: { type: String },
+    content: { type: String },
+    Nickname: { type: String,  max: 10, required: true},
+    // location: { type: String, required: true },
     lat: { type: Number, required: false},
     lng: { type: Number},
-    addr: { type: String, required: true}
+    addr: { type: String }
 
 });
 
-// const ImageSchema = new Schema({
-//     birdInformation: { type: BirdSchema, required: true },
-//     // other fields in the schema
-// });
-
-var Bird = mongoose.model('Bird', BirdSchema);
+const Bird = mongoose.model('Bird', BirdSchema);
 
 module.exports = Bird;
-
-
-
-
-
-
-

@@ -1,3 +1,9 @@
+/**
+
+ Fetches birds data from the server and populates a table with it.
+ @function
+ @returns {void}
+ */
 fetch('../../controller/bird')
     .then(response => response.json())
     .then(birds => {
