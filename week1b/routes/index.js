@@ -116,9 +116,9 @@ router.post('/', upload.single('inputImg'), function(req, res) {
 
 
 
-router.get('/add_pictures', function(req, res, next) {
-  res.render('bird', { title: " " });
-});
+//router.get('/add_pictures', function(req, res, next) {
+  //res.render('bird', { title: " " });
+//});
 
 router.post('/details', function(req, res, next) {
   res.render('details', { title: "" });
