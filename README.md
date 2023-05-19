@@ -4,7 +4,7 @@
 This is a description of us project.
 Our program implements a bird observation system where each person can upload information and pictures about the birds, change the name according to the unique Nickname of the uploaded picture, and sort them according to different distances or dates on the main page. The main page can be sorted according to distance or date. A live chat function is also available for each message, and specific information is displayed. In addition the application is able to implement offline and online .
 
-Translated with www.DeepL.com/Translator (free version)
+
 
 ## Installation
 
