@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0b8821a8-7691-4009-897a-9d5d2c6949bc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/week1b/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/week1b/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week1b/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/week1b/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week1b/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/week1b/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week1b/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/week1b/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week1b/views/bird.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/week1b/views/bird.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week1b/views/details.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/week1b/views/details.ejs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PzRqXnRxFXl4sLRhEjr6Ij3NVS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Websotrm/com3504_team_09/week1b/public/javascripts",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "C:/Users/lenovo/AppData/Roaming/JetBrains/WebStorm2022.3/node/node-v16.16.0-win-x64/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Websotrm\com3504_team_09\week1b\public\javascripts" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/week1b/bin/www" working-dir="$PROJECT_DIR$/week1b/bin">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.www" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b8821a8-7691-4009-897a-9d5d2c6949bc" name="Changes" comment="" />
+      <created>1684458114988</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684458114988</updated>
+      <workItem from="1684458116090" duration="47000" />
+      <workItem from="1684458164221" duration="2602000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

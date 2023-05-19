@@ -8,6 +8,7 @@ var showindex = require('../controller/showindex');
 const changeName = require('../controller/changeName');
 const fs = require('fs');
 const uploadDir = 'public/uploads/';
+
 const Bird = require('../model/bird');
 
 var storage = multer.diskStorage({

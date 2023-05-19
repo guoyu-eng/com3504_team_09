@@ -18,11 +18,15 @@
     <script src="javascripts/database.js" type="module"></script>
     <script src="javascripts/app.js"></script>
 
+    <script type="module" src="/javascripts/idb/index.js"></script>
+
+    <script src="javascripts/database.js" type="module"></script>
+    <script src="javascripts/app.js"></script>
+
 </head>
 
 <body onload="initBirdWatching()">
 
-<body>
 <!--<h1>brid</h1>-->
 <!--<p>show the bird information in there </p>-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -44,6 +48,7 @@
 
 
 
+<<<<<<< HEAD
 <form action="bird" method="POST" enctype="multipart/form-data">
     <div id="name-and-unknown-wrapper">
         <div id="name-wrapper">
@@ -55,6 +60,11 @@
             <input type="checkbox" id="unknownTick" name="unknownTick"/>
         </div>
     </div>
+=======
+<form action="/" method="POST" enctype="multipart/form-data">
+    <label for="name">name</label>
+    <input type="text" id="name" name="name" value="" required/>
+>>>>>>> chat_fix_button
 
     <p><label for="Nickname">Username</label>
         <input type="text" id="Nickname" name="Nickname" value="" />
@@ -93,6 +103,7 @@
     </p>
 
     <p><input type="submit" onclick="storeToIDB()" value = "Submit Sighting"></p>
+
 </form>
 
 <script type="application/javascript" src="/javascripts/index.js"></script>
