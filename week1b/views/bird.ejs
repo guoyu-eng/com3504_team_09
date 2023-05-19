@@ -2,12 +2,21 @@
 <html>
 <head>
     <title>bird</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link rel='stylesheet' href='/stylesheets/submitBird.css'>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootswatch/5.1.0/cosmo/bootstrap.min.css">
-
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+            integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+            crossorigin="anonymous"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="module" src="javascripts/gmaps.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/gmaps.css">
+    <script type="module" src="javascripts/unknownTick.js"></script>
+
+    <script type="module" src="/javascripts/idb/index.js"></script>
+
+    <script src="javascripts/database.js" type="module"></script>
+    <script src="javascripts/app.js"></script>
 
     <script type="module" src="/javascripts/idb/index.js"></script>
 
@@ -18,12 +27,11 @@
 
 <body onload="initBirdWatching()">
 
-<body>
 <!--<h1>brid</h1>-->
 <!--<p>show the bird information in there </p>-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="/bird">Bird page</a>
+        <a class="navbar-brand" href="/bird">Add Sighting Page</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,15 +49,23 @@
 
 
 <form action="bird" method="POST" enctype="multipart/form-data">
-    <label for="name">name</label>
-    <input type="text" id="name" name="name" value="" required/>
+    <div id="name-and-unknown-wrapper">
+        <div id="name-wrapper">
+            <label for="name">Name of bird</label>
+            <input type="text" id="name" name="name" value="" required/>
+        </div>
+        <div id="unknown-wrapper">
+            <label for="unknownTick">Unknown?</label>
+            <input type="checkbox" id="unknownTick" name="unknownTick"/>
+        </div>
+    </div>
 
-    <p><label for="Nickname">Nickname(remember to this )</label>
+    <p><label for="Nickname">Username</label>
         <input type="text" id="Nickname" name="Nickname" value="" />
     </p>
 
-    <p><label for="date">date</label>
-        <input type="date" id="date" name="date" value="" />
+    <p><label for="date">Time and date</label>
+        <input type="datetime-local" id="date" name="date" value="" />
     </p>
 <!--    <p><label for="location">location</label>-->
 <!--        <input type="text" id="location" name="location" value="" required/>-->
@@ -68,27 +84,20 @@
     </p>
     <div id="map"></div>
 
-    <label for="category">category</label>
-    <select id="category" name="category" required>
-        <option value="c" selected>Terrestrial birds</option>
-        <option value="f">Aquatic birds</option>
-        <option value="k">Aerial birds</option>
-    </select>
-
-
     <label for="inputImage">Please upload your images in here</label>
-    <div >
+    <div id="inputImageWrapper">
 
         <input type="file" id="inputImage" name="inputImg" value="choose" enctype="multipart/form-data" required/>
         <!--        <input type="file" id="inputImage" name="inputImg" value="choose" accept="image/*" required >-->
     </div>
 
 
-    <p><label for="details">details</label>
+    <p><label for="details">Details of the sighting</label>
         <textarea id="details" name="details" rows="10" cols="50" required></textarea>
     </p>
 
-    <p><input type="submit" onclick="storeToIDB()" value = "ok"></p>
+    <p><input type="submit" onclick="storeToIDB()" value = "Submit Sighting"></p>
+
 </form>
 
 <script type="application/javascript" src="/javascripts/index.js"></script>

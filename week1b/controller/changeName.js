@@ -32,8 +32,8 @@ exports.changeName = async function(req, res, next) {
         // compare whether is has this
         const isValidNickname = bird.Nickname === nickname;
         if (!isValidNickname) {
-            console.log(bird);
-            return res.redirect('/');
+            console.error('Only the original username is permitted to update the bird name')
+            return res.redirect('/details?id='+bird._id);
         }
         // change the new name
         bird.name = newName;

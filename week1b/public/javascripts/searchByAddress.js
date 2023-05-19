@@ -40,6 +40,7 @@ function initMap() {
     mapDiv.appendChild(createMapButton);
     createMapButton.type = "button";
     createMapButton.value = "Click to toggle map"
+    createMapButton.id = "createMapButton";
     submitButton.classList.add("button", "button-primary");
 
 
@@ -73,6 +74,7 @@ function initMap() {
 
     createMapButton.addEventListener("click", () => {
       $("#map").toggle();
+      $("#geocoder").toggleClass("geocoder-map-active");
     });
 
     map = new google.maps.Map(document.getElementById("map"), {

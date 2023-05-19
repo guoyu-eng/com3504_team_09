@@ -15,6 +15,7 @@ var database= require('../db/bird')
 
 
 
+
 /**
  * Get port from environment and store in Express.
  */
@@ -95,3 +96,10 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+const io = require('socket.io')(server, {
+  pingTimeout: 60000,
+});
+var socket_module = require('../controller/socket-io');
+socket_module.init(io, app);

@@ -95,3 +95,13 @@ input[type=button].button-secondary:hover {
     padding: 1rem;
     font-size: medium;
 }
+
+#geocoder.geocoder-map-active {
+    height: 600px;
+}
+
+@media (max-width: 768px) {
+    #map {
+        width: 90%;
+    }
+}

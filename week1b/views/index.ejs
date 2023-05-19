@@ -2,7 +2,7 @@
 <html>
 <head>
 
-  <link rel='stylesheet' href='/stylesheets/show.css'>
+  <link rel='stylesheet' href='/stylesheets/showAll.css'>
   <!--    <script type="application/javascript" src="/javascripts/index.js"></script>-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -17,6 +17,7 @@
   <!--    <script type="module" src="javascripts/geocoder.js"></script> -->
 
   <script type="module" src="javascripts/searchByAddress.js"></script>
+  <script type="module" src="javascripts/searchOther.js"></script>
 </head>
 <body>
 
@@ -31,93 +32,108 @@
 
 
 <div class="card mb-3" style="width: 100%;">
-<!--  <div class="card-header">search</div>-->
+  <!--  <div class="card-header">search</div>-->
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" style="display:flex;justify-content:space-between;align-items:center;">
-      <form class="form-inline" enctype="multipart/form-data" action="/product/search" method="GET">
-
-        <select class="form-control mx-2" name="category" id="category">
-          <option value="name_search">name</option>
-          <option value="B">date</option>
-          <option value="C">categorly</option>
-        </select>
-
-        <select class="form-control mx-2" name="name" id="name">
-          <option value="A">Terrestrial birds</option>
-          <option value="B">Aquatic birds</option>
-          <option value="C">Aerial birds</option>
-        </select>
-
-        <button type="submit" class="btn btn-primary">search</button>
+    <li class="search-forms-container">
+      <form class="search-forms" id="searchByNameForm">
+        <span class="form-title" id="searchByNameTitle">Search by name</span>
+        <input type="text" id="searchByNameInput" class="search-by-name" placeholder="Search by name">
       </form>
+
+      <!--<form id="unknownTogglerForm" class="">
+        <input type="radio" id="hideUnknown" name="toggleUnknown" value="hideUnknown">
+        <label for="hideUnknown">Show only known</label><br>
+        <input type="radio" id="onlyUnknown" name="toggleUnknown" value="onlyUnknown">
+        <label for="onlyUnknown">Show only unknown</label><br>
+        <input type="radio" id="showBoth" name="toggleUnknown" value="both" checked>
+        <label for="showBoth">Show both</label>
+      </form>-->
+
+      <form class="search-forms" id="searchByDateForm" class="form-inline">
+        <span class="form-title" id="searchByDateTitle">Search by Date</span>
+        <div class="start-date-group">
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" name="start_date" required>
+        </div>
+        <div class="end-date-group">
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" name="end_date" required>
+        </div>
+        <button id="searchByDateBtn" type="submit" class="btn btn-primary">Search</button>
+        <button id="resetDateBtn" type="reset" class="btn btn-secondary">Reset</button>
+      </form>
+
+      <div class="search-forms double" id="geocoder">
+        <span class="form-title" id="mapTitle">Sort by distance from location</span>
+        <div id="geocoder-buttons"></div>
+        <div id="map"></div>
+      </div>
 
     </li>
   </ul>
 </div>
 
-<div id="geocoder">
-  <div id="geocoder-buttons"></div>
-  <div id="map"></div>
-</div>
-
 <div class="button-container">
-  <form action="add_picture" method="POST">
-    <input type="submit" value="Add">
-  </form>
-
+  <button class="btn btn-primary" id="birdButton">Add a Sighting to the Database</button>
 </div>
+<script>
+  var birdButton = document.getElementById('birdButton');
+  birdButton.addEventListener('click', function() {
+    window.location.href = '/bird';
+  });
+</script>
 
-<div id="birds-list" style="padding: 10px;" >
+<div id="birds-list">
   <% if (typeof bird !== 'undefined') { %>
-    <div class="row">
       <% let i = 0; %>
       <% for (const name in bird) { %>
-        <% let thisID = "bird-info-" + i %>
-        <div class="bird-info" id="<%= thisID %>">
-          <ul>
-            <li><span class="list-title"><strong>Name:</strong></span>
-              <span class="list-value"> <%= bird[name].name %> </span></li>
-              <li><span class="list-title"><strong>Date:</strong></span>
-                  <span class="list-value"> <%= bird[name].date %></span></li>
-<!--              <li><span class="list-title"><strong>Details:</strong></span>-->
-<!--              <span class="list-value"> <%= bird[name].details %> </span></li>-->
+        <% if (bird[name].inputImg !== null) { %>
+          <% let thisID = "bird-info-" + i %>
+          <div class="bird-info" id="<%= thisID %>">
+            <ul>
+              <li class="name"><span class="list-title"><strong>Name:</strong></span>
+                <span class="list-value"> <%= bird[name].name %> </span></li>
+              <li class="date"><span class="list-title"><strong>Date:</strong></span>
+                <span class="list-value"> <%= bird[name].date.toUTCString() %></span></li>
+              <!-- Add other fields that you want to display -->
 
-            <li class="lat hidden"><span class="list-title"><strong>Lat:</strong></span>
-              <span class="list-value"> <%= bird[name].lat %> </span></li>
-            <li class="lng hidden" ><span class="list-title"><strong>Lng:</strong></span>
-              <span class="list-value"> <%= bird[name].lng %> </span></li>
-            <li class="address hidden"><span class="list-title"><strong>Address:</strong></span>
-              <span class="list-value"> <%= bird[name].addr %> </span></li>
-            <li class="distance hidden"><span class="list-title"><strong>Distance:</strong></span>
-              <span class="list-value"></span></li>
-<!--            <li><span class="list-title"><strong>image:</strong></span>-->
+              <li class="lat hidden"><span class="list-title"><strong>Lat:</strong></span>
+                <span class="list-value"> <%= bird[name].lat %> </span></li>
+              <li class="lng hidden" ><span class="list-title"><strong>Lng:</strong></span>
+                <span class="list-value"> <%= bird[name].lng %> </span></li>
+              <li class="address hidden"><span class="list-title"><strong>Address:</strong></span>
+                <span class="list-value"> <%= bird[name].addr %> </span></li>
+              <li class="distance hidden"><span class="list-title"><strong>Distance:</strong></span>
+                <span class="list-value"></span></li>
+              <!--            <li><span class="list-title"><strong>image:</strong></span>-->
 
 
-            <li><strong>Image:</strong>
-              <div class="image-container">
-                <img src="<%= bird[name].inputImg %>" alt="Bird Image" onclick="showImage('<%= bird[name].inputImg %>')">
-                <div class="image-overlay">
-                  <a href="/details?id=<%= bird[name]._id %>" class="btn btn-success">Showing</a>
+              <li><strong>Image:</strong>
+                <div class="image-container">
+                  <img src="<%= bird[name].inputImg %>" alt="Bird Image" onclick="showImage('<%= bird[name].inputImg %>')">
+                  <a class="image-overlay" href="/details?id=<%= bird[name]._id %>">
+                    <button class="btn btn-success">Showing</button>
+                  </a>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <% if ((parseInt(name) + 1) % 3 === 0) { %>
-    </div><div class="row">
+              </li>
+            </ul>
+          </div>
+        <% } %>
+      <% i++ %>
       <% } %>
-      <%= i++ %>
-      <% } %>
-    </div>
   <% } else { %>
     <p>Bird not found.</p>
   <% } %>
+</div>
 
-
+<script src="../public/javascripts/index.js"></script>
 <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY&callback=initMap&v=weekly&region=UK"
         defer
 ></script>
+
+
+<script src="../public/javascripts/index.js"></script>
 
 </body>
 </html>

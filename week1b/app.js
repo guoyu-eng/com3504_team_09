@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 
 
 const birdRouter = require('./routes/birds');
-app.use('/bird', birdRouter);
+// app.use('/bird', birdRouter);
 
 // app.use(express.static('public'));
 
@@ -38,7 +38,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // var birdRouter = require('./routes/birds');
-app.use('/birds', birdsRouter);
+// app.use('/birds', birdsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
