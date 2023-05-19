@@ -1,6 +1,6 @@
 /**
  * called by the HTML onload
- * showing any cached forecast data and declaring the service worker
+ * showing any cached sightings and declaring the service worker
  */
 
 
@@ -21,7 +21,7 @@ function initBirdWatching() {
 }
 
 /**
- * given the list of cities created by the user, it will retrieve all the data from
+ * given the list of sightings created by the user, it will retrieve all the data from
  * the server (or failing that) from the database
  * @param forceReload true if the data is to be loaded from the server
  */
@@ -31,10 +31,9 @@ function loadData(forceReload){
 }
 
 /**
- * it cycles through the list of cities and requests the data from the server for each
+ * it cycles through the list of sightings and requests the data from the server for each
  * city
  * @param birdList the list of the cities the user has requested
- * @param date the date for the forecasts (not in use)
  * @param forceReload true if the data is to be retrieved from the server
  */
 function retrieveAllCitiesData(birdList, forceReload){
@@ -44,11 +43,9 @@ function retrieveAllCitiesData(birdList, forceReload){
 }
 
 /**
- * given one city and a date, it queries the server via Ajax to get the latest
- * weather forecast for that city
+ * given one bird name, it queries the server via Ajax to get the sighting
  * if the request to the server fails, it shows the data stored in the database
  * @param name
- * @param date
  * @param forceReload true if the data is to be retrieved from the server
  */
 async function loadBirdData(name, forceReload){
@@ -92,24 +89,10 @@ async function loadBirdData(name, forceReload){
         document.getElementById('bird_list').style.display = 'none';
 }
 
-
-///////////////////////// INTERFACE MANAGEMENT ////////////
-
-
 /**
- * given the forecast data returned by the server,
- * it adds a row of weather forecasts to the results div
+ * given the sightings returned by the server,
+ * it adds a row of bird sightings to the results div
  * @param dataR the data returned by the server:
- * class WeatherForecast{
- *  constructor (location, date, forecast, temperature, wind, precipitations) {
- *    this.location= location;
- *    this.date= date,
- *    this.forecast=forecast;
- *    this.temperature= temperature;
- *    this.wind= wind;
- *    this.precipitations= precipitations;
- *  }
- *}
  */
 function addToResults(dataR) {
     if (document.getElementById('results') != null) {
@@ -130,6 +113,9 @@ function addToResults(dataR) {
     }
 }
 
+/**
+ * Store cached data by click
+ */
 function storeToIDB(){
     let name = document.getElementById('name').value;
     let details = document.getElementById('details').value;
@@ -139,33 +125,18 @@ function storeToIDB(){
     let latlng = document.getElementById('latlng').value;
 
     storeCachedData(name, details, inputImg, lat, lng, latlng);
-    alert("Successfully created story");
+    alert("Successfully created sighting");
+    console.log("Successfully created sighting")
 }
 
 
 /**
- * it removes all forecasts from the result div
+ * it removes all sightings from the result div
  */
 function refreshBirdList(){
     if (document.getElementById('results')!=null)
         document.getElementById('results').innerHTML='';
 }
-
-/**
- * it enables selecting the city from the drop down menu
- * it saves the selected city in the database so that it can be retrieved next time
- * @param city
- * @param date
- */
-function selectBird(bird) {
-    var birdList=JSON.parse(localStorage.getItem('birds'));
-    if (birdList==null) birdList=[];
-    birdList.push(bird);
-    localStorage.setItem('cities', JSON.stringify(birdList));
-    retrieveAllCitiesData(birdList, true);
-}
-
-
 
 /**
  * When the client gets off-line, it shows an off line warning to the user
@@ -200,13 +171,16 @@ function hideOfflineWarning(){
 
 
 /**
- * it shows the city list in the browser
+ * it shows the sightings in the browser
  */
 function showBirdList() {
     if (document.getElementById('bird_list')!=null)
         document.getElementById('bird_list').style.display = 'block';
 }
 
+/**
+ * upload bird data by fetching
+ */
 function birdUpload(){
     var name = document.getElementById('name').value;
     var data = document.getElementById('data').value;

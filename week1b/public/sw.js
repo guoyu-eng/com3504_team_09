@@ -2,20 +2,22 @@ let cache = null;
 let dataCacheName ='birdData-v1';
 let cacheName = 'birdPWA-step-8-1';
 let filesToCache = [
-    '/',
-    '/javascripts/birdInformation.js',
-    '/javascripts/gmaps.js',
-    '/javascripts/database.js',
-    '/javascripts/idb/index.js',
-    '/javascripts/searchByAddress.js',
     '/javascripts/app.js',
+    '/javascripts/birdInformation.js',
+    '/javascripts/chat.js',
+    '/javascripts/database.js',
     '/javascripts/details.js',
+    '/javascripts/gmaps.js',
+    '/javascripts/index.js',
+    '/javascripts/searchByAddress.js',
     '/javascripts/upload.js',
+    '/javascripts/idb/index.js',
     '/stylesheets/geocodeMap.css',
     '/stylesheets/gmaps.css',
     '/stylesheets/show.css',
     '/stylesheets/style.css',
-    '/bird'
+    '/bird',
+    '/'
 ]
 
 
@@ -48,16 +50,7 @@ self.addEventListener('activate', function (e) {
             }));
         })
     );
-    /*
-     * Fixes a corner case in which the app wasn't returning the latest data.
-     * You can reproduce the corner case by commenting out the line below and
-     * then doing the following steps: 1) load app for first time so that the
-     * initial New York City data is shown 2) press the refresh button on the
-     * app 3) go offline 4) reload the app. You expect to see the newer NYC
-     * data, but you actually see the initial data. This happens because the
-     * service worker is not yet activated. The code below essentially lets
-     * you activate the service worker faster.
-     */
+
     return self.clients.claim();
 });
 
@@ -71,17 +64,14 @@ self.addEventListener('activate', function (e) {
  *      from there (e.g. showing the cached data)
  * all the other pages are searched for in the cache. If not found, they are returned
  */
-self.addEventListener('fetch', function (event) {
-    /*e.respondWith(
-        fetch(e.request).catch(function(){
-            return caches.match(e.request);
-        })
-    );*/
-    event.respondWith(async function () {
-        try {
-            return await fetch(event.request);
-        } catch (err) {
-            return caches.match(event.request);
-        }
-    }());
+self.addEventListener('fetch', (event) => {
+    console.log('Fetch intercepted for:', event.request.url);
+    event.respondWith(
+        caches.match(event.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return fetch(event.request);
+        }),
+    );
 });
