@@ -11,7 +11,7 @@ Our program implements a bird observation system where each person can upload in
 To install the project, follow these steps:
 
 1. Clone the repository.
-2. Run `npm start` to install dependencies.
+2. Run `npm install` to install dependencies.
 
 ## Contribution
 
