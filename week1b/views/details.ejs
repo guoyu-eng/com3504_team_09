@@ -65,8 +65,8 @@
                             <span class="list-value"> <%= bird.lng %> </span></li>
                         <li class="address"><span class="list-title"><strong>Address:</strong></span>
                             <span class="list-value"> <%= bird.addr %> </span></li>
-                        <!--            <li><span class="list-title"><strong>image:</strong></span>-->
-
+                        <li class="birdLink" ><span class="list-title"><strong>Wiki URI:<a href="https://dbpedia.org/page/<%= bird.name %> ">Click Here</a></strong></span>
+                            <span class="list-value"> </span></li>
 
                         <input type="hidden" id="default_name" value="<%= bird.name %>">
                         <input type="hidden" id="default_details" value="<%= bird.details %>">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
 
   <link rel='stylesheet' href='/stylesheets/showAll.css'>
@@ -74,11 +74,14 @@
 </div>
 
 <div class="button-container">
-  <form action="add_picture" method="POST">
-    <input type="submit" value="Add a Sighting to the Database">
-  </form>
-
+  <button id="birdButton">Add a Sighting to the Database</button>
 </div>
+<script>
+  var birdButton = document.getElementById('birdButton');
+  birdButton.addEventListener('click', function() {
+    window.location.href = '/bird';
+  });
+</script>
 
 <div id="birds-list">
   <% if (typeof bird !== 'undefined') { %>
@@ -123,7 +126,7 @@
   <% } %>
 </div>
 
-
+<script src="../public/javascripts/index.js"></script>
 <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY&callback=initMap&v=weekly&region=UK"
         defer
