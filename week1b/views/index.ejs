@@ -60,12 +60,24 @@
   <div id="map"></div>
 </div>
 
-<div class="button-container">
-  <form action="add_picture" method="POST">
-    <input type="submit" value="Add">
-  </form>
 
+
+<div class="button-container">
+
+  <button id="birdButton">ADD</button>
 </div>
+<script>
+
+  var birdButton = document.getElementById('birdButton');
+
+  birdButton.addEventListener('click', function() {
+    window.location.href = '/bird';
+  });
+</script>
+
+
+
+
 
 <div id="birds-list" style="padding: 10px;" >
   <% if (typeof bird !== 'undefined') { %>
@@ -108,6 +120,9 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY&callback=initMap&v=weekly&region=UK"
         defer
 ></script>
+
+
+<script src="../public/javascripts/index.js"></script>
 
 </body>
 </html>
