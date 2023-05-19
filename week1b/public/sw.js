@@ -13,8 +13,8 @@ let filesToCache = [
     '/javascripts/upload.js',
     '/stylesheets/geocodeMap.css',
     '/stylesheets/gmaps.css',
-    '/stylesheets/show.css',
-    '/stylesheets/style.css',
+    '/stylesheets/showAll.css',
+    '/stylesheets/submitBird.css',
     '/bird'
 ]
 

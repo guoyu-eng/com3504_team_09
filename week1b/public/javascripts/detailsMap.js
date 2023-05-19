@@ -1,5 +1,6 @@
 let map;
 
+//$(function(){$("img").click(function(){this.requestFullscreen()})});
 async function initMap() {
     const {Map} = await google.maps.importLibrary("maps");
     let myLat = parseFloat($(".lat .list-value").text().trim());

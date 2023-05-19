@@ -1,4 +1,4 @@
-.bird-info {
+/*.bird-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,13 +8,18 @@
     border: 1px solid #ccc;
     padding: 10px;
     /*margin-bottom: 20px;*/
-}
+/*}
 .row:nth-child(even) .bird-info:nth-child(odd),
 .row:nth-child(odd) .bird-info:nth-child(even) {
     margin-right: 20px;
 
+}*/
+.bird-info {
+    margin: 10px;
+    width: 30%;
+    display: inline-flex;
+    height: 400px;
 }
-
 
 
 
@@ -171,15 +176,16 @@ input[type="submit"]:hover {
 
 .image-container {
     position: relative;
-    width: calc(80% - 20px);
     margin-right: 20px;
     margin-bottom: 10px;
 }
 
 .image-container img {
-    width: 100%;
+    width: auto;
     height: auto;
+    margin: auto;
     display: block;
+    max-height: 250px;
 }
 
 .image-overlay {
@@ -201,5 +207,56 @@ input[type="submit"]:hover {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.search-forms-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding: .75rem 1.25rem;
+}
+
+.form-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+@media (max-width: 1100px) {
+    .search-forms-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-forms:nth-child(1),
+    .search-forms:nth-child(2) {
+        grid-column: 1;
+    }
+
+    .search-forms:nth-child(3) {
+        grid-column: 1 / span 2;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .search-forms-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-forms.double {
+        grid-column: auto;
+    }
+    #geocoder.search-forms {
+        width: 90%;
+    }
+}
+
+#searchByDateForm {
+    max-width: 200px;
+    margin: 0px auto;
+}
+
+#searchByDateBtn, #resetDateBtn {
+    margin-top: 3px;
 }
 

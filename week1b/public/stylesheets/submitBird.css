@@ -15,7 +15,7 @@ form {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-label {
+form label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -60,3 +60,33 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #3e8e41;
 }
+
+#name-and-unknown-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#name-wrapper {
+  display: block;
+  width: 80%;
+  margin-right: 10px;
+}
+
+#unknown-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#inputImageWrapper {
+  margin-bottom: 20px;
+}
+
+#addr {
+  background-color: #ddd;
+}
+
+#details {
+  margin: auto !important;
+}
+
