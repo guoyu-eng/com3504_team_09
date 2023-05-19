@@ -64,7 +64,9 @@ Chatting history can be stored in IndexedDB
 We are team WUBBA LUBBA DUB-DUB. If you would like to contact us, here are our contact details and Github links：
 
 Guoyu : gliu14@sheffield.ac.uk
+
 Jingyu Han : jhan39@sheffield.ac.uk
+
 Yifeng Liu : yliu356@sheffield.ac.uk
 
 
