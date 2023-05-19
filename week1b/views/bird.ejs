@@ -9,8 +9,17 @@
     <script type="module" src="javascripts/gmaps.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/gmaps.css">
 
+    <script type="module" src="/javascripts/idb/index.js"></script>
+
+    <script src="javascripts/database.js" type="module"></script>
+    <script src="javascripts/app.js"></script>
+
 </head>
-<body>
+
+<body onload="initBirdWatching()">
+
+
+
 <!--<h1>brid</h1>-->
 <!--<p>show the bird information in there </p>-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -81,9 +90,7 @@
     </p>
 
 
-    <p><input type="submit" , value = " ok"></p>
-
-
+    <p><input type="submit" onclick="storeToIDB()" value = "ok"></p>
 
 
 </form>
