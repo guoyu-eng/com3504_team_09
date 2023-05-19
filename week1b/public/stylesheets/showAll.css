@@ -259,4 +259,9 @@ input[type="submit"]:hover {
 #searchByDateBtn, #resetDateBtn {
     margin-top: 3px;
 }
-
+#birdButton {
+    padding: 15px;
+    width: 30%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
