@@ -7,7 +7,7 @@ Our program implements a bird observation system where each person can upload in
 # Notification
 Please follow the steps of video to use the website
 
-This porject try to use the .jpg picture to upload by MAC(M1)
+This porject try to use the `.jpg` picture to upload by MAC(M1)
 
 
 ## Installation
