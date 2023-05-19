@@ -21,7 +21,7 @@ exports.init = function(io) {
                 io.sockets.to(room).emit('joined', room, userId);
 
 
-                Chat.find({ name: defaultName, details: defaultDetails, Nickname: defaultNickname }, 'userid content')
+                Chat.find({ details: defaultDetails, Nickname: defaultNickname }, 'userid content')
                     .exec()
                     .then(records => {
                         const chatHistory = records.map(record => `${record.userid}: ${record.content}`);
