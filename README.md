@@ -7,7 +7,7 @@ Our program implements a bird observation system where each person can upload in
 # Notification
 Please follow the steps of video to use the website
 
-This porject try to use the `.jpg` picture to upload by MAC(M1)
+This project try to use the `.jpg` picture to upload by MAC(M1)
 
 
 ## Installation
@@ -47,21 +47,22 @@ v19.7.0
 
 ## TODO
 
-Users can upload images form URL/File/Camera
+Users can upload images from URL/File
 Server store uploaded images to MongoDB
 Users can view all uploaded images
 Users can search for images
 Users can start an annotation session by selecting an image and choose a room number
 Users can chat within a room and the history message
+Users can change the Name of the bird, using their Nickname
 Offline experience with Service Worker
-Chatting history can be stored in IndexedDB
+Chatting history can be stored in MongoDB
 
 
 
 
 ## Contact
 
-We are team WUBBA LUBBA DUB-DUB. If you would like to contact us, here are our contact details and Github links：
+We are team 09. If you would like to contact us, here are our contact details and Github links：
 
 Guoyu : gliu14@sheffield.ac.uk
 
