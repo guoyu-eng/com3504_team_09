@@ -1,7 +1,7 @@
 #map {
     height: 300px;
     width: auto;
-    margin: auto;
+    margin: auto auto 20px;
 }
 
 .invisible-field {

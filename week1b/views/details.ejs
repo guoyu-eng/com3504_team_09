@@ -5,13 +5,14 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootswatch/5.1.0/cosmo/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/show_page.css'>
-
+    <link rel='stylesheet' href='/stylesheets/show_one_page.css'>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/geocodeMap.css" />
+    <script type="module" src="javascripts/detailsMap.js"></script>
+    <script type="module" src="javascripts/changeName.js"></script>
 </head>
 <body onload="init()" >
 
@@ -21,7 +22,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="#">Bird App</a>
+        <a class="navbar-brand" href="/">Bird App</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,39 +40,38 @@
 </nav>
 
 <div class="container">
-    <h1 class="text-center my-3">Showing Page</h1>
+    <h1 class="text-center my-3">Details Page</h1>
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <img src="<%= bird.inputImg %>" alt="Bird Image" class="img-fluid rounded bird-image">
+    <div class="row">
+        <a target="_blank" class="col-md-6 rounded" id="birdImgAnchor" href="<%= bird.inputImg%>">
+            <img class="img-fluid bird-image" id="birdImg" src="<%= bird.inputImg %>" alt="Bird Image"></a>
+        <div class="col-md-6" id="map">
+
         </div>
     </div>
 
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-6">
+
+    <div id="detailsWrapper" class="row justify-content-center mt-3">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <ul class="list-group">
                         <li><span class="list-title"><strong>Name:</strong></span>
                             <span class="list-value"> <%= bird.name %> </span></li>
                         <li><span class="list-title"><strong>Date:</strong></span>
-                            <span class="list-value"> <%= bird.date %></span></li>
+                            <span class="list-value"> <%= bird.date.toUTCString() %></span></li>
                         <li><span class="list-title"><strong>Details:</strong></span>
                             <span class="list-value"> <%= bird.details %> </span></li>
 
-                        <li class="lat"><span class="list-title"><strong>Lat:</strong></span>
+                        <li class="lat hidden"><span class="list-title"><strong>Lat:</strong></span>
                             <span class="list-value"> <%= bird.lat %> </span></li>
 
-                        <li class="lng" ><span class="list-title"><strong>Lng:</strong></span>
+                        <li class="lng hidden" ><span class="list-title"><strong>Lng:</strong></span>
                             <span class="list-value"> <%= bird.lng %> </span></li>
                         <li class="address"><span class="list-title"><strong>Address:</strong></span>
                             <span class="list-value"> <%= bird.addr %> </span></li>
-                        <li class="distance hidden"><span class="list-title"><strong>Distance:</strong></span>
-                            <span class="list-value"></span></li>
                         <li class="birdLink" ><span class="list-title"><strong>Wiki URI:<a href="https://dbpedia.org/page/<%= bird.name %> ">Click Here</a></strong></span>
                             <span class="list-value"> </span></li>
-                        <!--            <li><span class="list-title"><strong>image:</strong></span>-->
-
 
                         <input type="hidden" id="default_name" value="<%= bird.name %>">
                         <input type="hidden" id="default_details" value="<%= bird.details %>">
@@ -84,72 +84,79 @@
         </div>
     </div>
 </div>
-
 <div class="container">
-    <div class="row justify-content-center mt-3">
+    <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h3>Change Name</h3>
-                    <form method="POST" action="/change_name">
-                        @csrf
+                    <h3>Change Name of the Bird</h3>
+                    <form id="changeNameForm" method="POST" action="/change_name">
                         <div class="form-group">
-                            <label for="newName">New Name:</label>
+                            <label for="newName">New Bird Name:</label>
                             <input type="text" class="form-control" id="newName" name="newName" required>
                         </div>
                         <div class="form-group">
-                            <label for="nickname">Nickname:</label>
+                            <label for="nickname">Your Username:</label>
                             <input type="text" class="form-control" id="nickname" name="nickname" required>
                         </div>
                         <input type="hidden" name="changeid" value="<%= bird.id.toString() %>">
-                        <button type="submit" class="btn btn-primary">Change</button>
+                        <button id="changeNameSubmit" type="submit" class="btn btn-primary">Change</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 
 
 
-<div id="initial_form" style="display: block">
-<!--    <p>Please insert the id of the Room you want to Join, if you do not have a room id, click Generate Room</p>-->
+
+    <div id="initial_form" class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+    <!--    <p>Please insert the id of the Room you want to Join, if you do not have a room id, click Generate Room</p>-->
     <form onsubmit="return false;">
         <p><label for="name"> Your name </label>
             <input type="text" id="name" name="name" >
         </p>
         <p>
             <label for="roomNo"> Your room </label>
-            <input type="text" id="roomNo" name="roomNo" value="<%= bird.id.toString() %>">
+            <input readonly type="text" id="roomNo" name="roomNo" value="<%= bird.id.toString() %>">
             <input type="hidden" id="default_name" value="<%= bird.name %>">
             <input type="hidden" id="default_details" value="<%= bird.details %>">
             <input type="hidden" id="default_Nickname" value="<%= bird.Nickname %>">
 
         </p>
 
-        <button id="connect" onclick="connectToRoom()">Connect</button>
+        <button class="btn btn-primary" id="connect" onclick="connectToRoom()">Connect</button>
     </form>
-</div>
 
-<div id="chat_interface" style="display: none">
-    <div id="chat_container">
-        <div id="history" class="boxed"></div>
-    </div>
-    <div id="input" class="bottom boxed">
-        <form onsubmit="return false;" style="width: 100%">
-            <p>
-                <label for="name"> chat: </label>
-                <input type="text" id="chat_input" name="chat_input" style="width: 80%">
+                </div>
+            </div>
+        </div>
 
-                <input type="hidden" id="default_name" value="<%= bird.name %>">
-                <input type="hidden" id="default_details" value="<%= bird.details %>">
-                <input type="hidden" id="default_Nickname" value="<%= bird.Nickname %>">
 
-                <button id="chat_send" onclick="sendChatText()">Send</button>
-            </p>
-        </form>
+
+        <div class="col-md-6" id="chat_interface">
+            <div id="chat_container">
+                <div id="history" class="boxed"></div>
+            </div>
+            <div id="input" class="bottom boxed">
+                <form onsubmit="return false;">
+                    <p id="chatBar">
+                        <label for="name"> chat: </label>
+                        <input type="text" id="chat_input" name="chat_input" style=" margin: auto; width: 70%">
+
+                        <input type="hidden" id="default_name" value="<%= bird.name %>">
+                        <input type="hidden" id="default_details" value="<%= bird.details %>">
+                        <input type="hidden" id="default_Nickname" value="<%= bird.Nickname %>">
+
+                        <button class="btn btn-primary" id="chat_send" onclick="sendChatText()">Send</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -160,7 +167,6 @@
 
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script type="module" src="javascripts/gmaps.js"></script>
 <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
     ({key: "AIzaSyCE2UeJSbO5af-ZqcPD8x-dflXCUWp3ZWY", v: "weekly"});</script>
 
@@ -171,16 +177,11 @@
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
         crossorigin="anonymous"></script>
 
-
-<script type="module" src="javascripts/searchByAddress.js"></script>
-
-
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 
 <script src="/javascripts/chat.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
-
 
 
 </body>

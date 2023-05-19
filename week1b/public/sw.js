@@ -14,9 +14,9 @@ let filesToCache = [
     '/javascripts/idb/index.js',
     '/stylesheets/geocodeMap.css',
     '/stylesheets/gmaps.css',
-    '/stylesheets/show.css',
-    '/stylesheets/style.css',
-    '/bird',
+    '/stylesheets/showAll.css',
+    '/stylesheets/submitBird.css',
+    '/bird'
     '/'
 ]
 
