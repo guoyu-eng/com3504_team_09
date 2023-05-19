@@ -16,7 +16,7 @@ let filesToCache = [
     '/stylesheets/gmaps.css',
     '/stylesheets/showAll.css',
     '/stylesheets/submitBird.css',
-    '/bird'
+    '/bird',
     '/'
 ]
 
