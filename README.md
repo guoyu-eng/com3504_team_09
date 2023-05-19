@@ -45,4 +45,25 @@ v19.7.0
 </pre>
 
 
+## TODO
+
+Users can upload images form URL/File/Camera
+Server store uploaded images to MongoDB
+Users can view all uploaded images
+Users can search for images
+Users can start an annotation session by selecting an image and choose a room number
+Users can chat within a room and the history message
+Offline experience with Service Worker
+Chatting history can be stored in IndexedDB
+
+
+
+
+## Contact
+
+We are team WUBBA LUBBA DUB-DUB. If you would like to contact us, here are our contact details and Github links：
+
+Guoyu : gliu14@sheffield.ac.uk
+
+
 
